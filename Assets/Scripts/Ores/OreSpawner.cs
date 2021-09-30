@@ -26,9 +26,9 @@ public class OreSpawner : MonoBehaviour {
     /// Spawns an ore at a random 'x' and 'z' coordonate within a sphere's radius.
     /// </summary>
     public void SpawnOre() {
-        Vector3 rngPosition = (Random.insideUnitSphere * m_Radius) + transform.position;
-        Vector3 position = new Vector3(rngPosition.x, transform.position.y, rngPosition.z);
-        GameObject ore = Instantiate(m_OrePrefabs[Random.Range(0, m_OrePrefabs.Length)], position, transform.rotation);
+        //Vector3 rngPosition = (Random.insideUnitSphere * m_Radius) + transform.position;
+        //Vector3 position = new Vector3(rngPosition.x, transform.position.y, rngPosition.z);
+        GameObject ore = Instantiate(m_OrePrefabs[Random.Range(0, m_OrePrefabs.Length)], GetOreSpawnPosition(), transform.rotation);
         SetOreAttributes(ore);
     }
 
@@ -40,6 +40,27 @@ public class OreSpawner : MonoBehaviour {
     public Material GetOreRarity()
     {
         return null;
+    }
+
+    /// <summary>
+    /// Using the Ore Spawner's current position and rotation, to stop it from spawning pass the base.
+    /// </summary>
+    /// <returns>The altered position.</returns>
+    private Vector3 GetOreSpawnPosition()
+    {
+        Vector3 rngPosition = (Random.insideUnitSphere * m_Radius) + transform.position;
+        // Need to know the orientation of the OreSpawner so that we can determine the 'base' of the sphere.
+        Vector3 position = new Vector3();
+
+        //TODO: Make it more fluid so that any angle can be used (time permiting)
+        switch (transform.rotation.eulerAngles.x)
+        {
+            case 0f: position = new Vector3(rngPosition.x, transform.position.y, rngPosition.z); break;
+            case 90f: position = new Vector3(rngPosition.x, rngPosition.y, transform.position.z); break;
+            case 180f: position = new Vector3(rngPosition.x, transform.position.y, rngPosition.z); break;
+            case 270f: position = new Vector3(rngPosition.x, rngPosition.y, transform.position.z); break;
+        }
+        return position;
     }
 
     /// <summary>

@@ -5,13 +5,15 @@ using UnityEditor;
 public class OreSpawnerEditor : Editor
 {
     private OreSpawner m_Script;
-    private GUILayoutOption[] m_ButtonOptions = new GUILayoutOption[] { GUILayout.Width(295) };
+    private GUILayoutOption[] m_ButtonOptions = new GUILayoutOption[] { GUILayout.ExpandWidth(true) };
 
     public override void OnInspectorGUI()
     {
         //base.OnInspectorGUI();
         DrawDefaultInspector();
         m_Script = (OreSpawner)target;
+
+        EditorGUILayout.Space();
 
         EditorGUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();

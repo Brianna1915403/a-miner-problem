@@ -44,9 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_OrePrefabs:
-  - {fileID: 2039618615767520140, guid: 389543ee7b5f79a42aed984cb6622ec5, type: 3}
-  - {fileID: 4719159698653470546, guid: fed6ed25bc09caa47af558d7a61e9fec, type: 3}
-  - {fileID: 5896610338975820564, guid: 0a969a8f23f9f3b408f9d12ba186fe81, type: 3}
+  - {fileID: 3406544533533101189, guid: af0a775b8813ef6408ff888ca916fe6c, type: 3}
   m_OreMaterials:
   - {fileID: 2100000, guid: a67713fb7d8f6244c83c578012d344cc, type: 2}
   - {fileID: 2100000, guid: aaa1480e43843494a96c2ed8acdfe698, type: 2}
