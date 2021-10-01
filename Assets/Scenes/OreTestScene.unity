@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -572,6 +572,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3200232306300955792, guid: 9c0be81dc8f0a324381f17a69bef674c, type: 3}
+      propertyPath: m_Radius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200232306300955792, guid: 9c0be81dc8f0a324381f17a69bef674c, type: 3}
+      propertyPath: m_OrePrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3200232306300955792, guid: 9c0be81dc8f0a324381f17a69bef674c, type: 3}
+      propertyPath: m_OrePrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4413986994579901686, guid: d5bd984383cd2034b8ffcf11e2d7df5c, type: 3}
+    - target: {fileID: 3200232306300955792, guid: 9c0be81dc8f0a324381f17a69bef674c, type: 3}
+      propertyPath: m_OrePrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4413986994579901686, guid: 3651444f4d505d940b2826f3e9b76b92, type: 3}
+    - target: {fileID: 3200232306300955792, guid: 9c0be81dc8f0a324381f17a69bef674c, type: 3}
+      propertyPath: m_OrePrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4413986994579901686, guid: becd47140a9ef3f4f9dc0d079d727239, type: 3}
+    - target: {fileID: 3200232306300955792, guid: 9c0be81dc8f0a324381f17a69bef674c, type: 3}
+      propertyPath: m_OrePrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 4413986994579901686, guid: db3c836e2d998094c84b9918b71934d3, type: 3}
+    - target: {fileID: 3200232306300955792, guid: 9c0be81dc8f0a324381f17a69bef674c, type: 3}
+      propertyPath: m_OrePrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 4413986994579901686, guid: f4dacda1addb7144d8c9996b55243c49, type: 3}
     - target: {fileID: 3200232306300955795, guid: 9c0be81dc8f0a324381f17a69bef674c, type: 3}
       propertyPath: m_RootOrder
       value: 3

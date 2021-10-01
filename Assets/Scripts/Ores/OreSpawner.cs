@@ -6,16 +6,8 @@ using UnityEditor;
 public class OreSpawner : MonoBehaviour {
 
     [SerializeField] private GameObject[] m_OrePrefabs;
-    [SerializeField] private Material[] m_OreMaterials;
     [SerializeField] private float m_Radius = 1f;
-    [SerializeField] private int m_CurrentFloor = 1;
-
-    public int CurrentFloor
-    {
-        set { m_CurrentFloor = value; }
-        get { return m_CurrentFloor;  }
-    }
-    
+        
     // Start is called before the first frame update
     void Start()
     {
@@ -26,19 +18,20 @@ public class OreSpawner : MonoBehaviour {
     /// Spawns an ore at a random 'x' and 'z' coordonate within a sphere's radius.
     /// </summary>
     public void SpawnOre() {
-        //Vector3 rngPosition = (Random.insideUnitSphere * m_Radius) + transform.position;
-        //Vector3 position = new Vector3(rngPosition.x, transform.position.y, rngPosition.z);
         GameObject ore = Instantiate(m_OrePrefabs[Random.Range(0, m_OrePrefabs.Length)], GetOreSpawnPosition(), transform.rotation);
         SetOreAttributes(ore);
     }
 
     public void SetOreAttributes(GameObject ore)
     {
-        
+        OresAttributes attributes = ore.GetComponent<OresAttributes>();
+
     }
 
     public Material GetOreRarity()
     {
+        // Depending on the current floor, the rarity of the ore will rise in bouts of 10
+        // Default value + (num of floor * percentage) = rarity for a single ore | 
         return null;
     }
 
@@ -52,7 +45,7 @@ public class OreSpawner : MonoBehaviour {
         // Need to know the orientation of the OreSpawner so that we can determine the 'base' of the sphere.
         Vector3 position = new Vector3();
 
-        //TODO: Make it more fluid so that any angle can be used (time permiting)
+        //TODO: TAKE ACCOUNT OF THE OTHER AXIS ROTATION
         switch (transform.rotation.eulerAngles.x)
         {
             case 0f: position = new Vector3(rngPosition.x, transform.position.y, rngPosition.z); break;
