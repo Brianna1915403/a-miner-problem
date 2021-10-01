@@ -110,3 +110,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thoughness: 5
   durability: 5
+  rarity: 5
+  currentDurability: 0

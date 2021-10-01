@@ -6,6 +6,7 @@ public class OresAttributes : MonoBehaviour
 {
     public int thoughness = 1;
     public int durability = 1;
+    public int rarity = 1;
     public int currentDurability;
     
     // Start is called before the first frame update
@@ -20,14 +21,10 @@ public class OresAttributes : MonoBehaviour
 
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentDurability -= damage;
-    }
-
-    private void DestroyOre(int durability)
-    {
-        if(durability <= 0)
+        if(currentDurability <= 0)
         {
             Destroy(gameObject);
         }
