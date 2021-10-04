@@ -11,7 +11,7 @@ public class OreSpawner : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
-        SpawnOre();
+        //SpawnOre();
     }
 
     /// <summary>
@@ -41,18 +41,20 @@ public class OreSpawner : MonoBehaviour {
     /// <returns>The altered position.</returns>
     private Vector3 GetOreSpawnPosition()
     {
-        Vector3 rngPosition = (Random.insideUnitSphere * m_Radius) + transform.position;
         // Need to know the orientation of the OreSpawner so that we can determine the 'base' of the sphere.
+        Vector3 rngPosition = (Random.insideUnitSphere * m_Radius) + transform.position;
+        Vector3 spawnerRotation = transform.rotation.eulerAngles;
         Vector3 position = new Vector3();
 
-        //TODO: TAKE ACCOUNT OF THE OTHER AXIS ROTATION
-        switch (transform.rotation.eulerAngles.x)
-        {
-            case 0f: position = new Vector3(rngPosition.x, transform.position.y, rngPosition.z); break;
-            case 90f: position = new Vector3(rngPosition.x, rngPosition.y, transform.position.z); break;
-            case 180f: position = new Vector3(rngPosition.x, transform.position.y, rngPosition.z); break;
-            case 270f: position = new Vector3(rngPosition.x, rngPosition.y, transform.position.z); break;
-        }
+        if (spawnerRotation.x == 0f || spawnerRotation.x == 180f)
+            position = new Vector3(rngPosition.x, transform.position.y, rngPosition.z);
+
+        if (spawnerRotation.x == 90f || spawnerRotation.x == 270f)
+            position = new Vector3(rngPosition.x, rngPosition.y, transform.position.z);
+
+        if (spawnerRotation.z == 90f || spawnerRotation.z == 270f)
+            position = new Vector3(transform.position.x, rngPosition.y, rngPosition.z);
+
         return position;
     }
 

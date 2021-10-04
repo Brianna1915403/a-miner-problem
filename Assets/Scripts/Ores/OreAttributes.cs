@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public enum ORE_TYPE { SILVER, COPPER, GOLD, ELECTRUM, PLATINUM }
+public enum ORE_TYPE { SILVER, COPPER, GOLD, ELECTRUM, PLATINUM}
 
 public class OresAttributes : MonoBehaviour
 {
@@ -20,8 +18,9 @@ public class OresAttributes : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        thoughness = ((int)OreType) + 1;
-        durability = ((int)OreType) + 1;
+        // Would need to change eventually
+        thoughness = (int)OreType;
+        durability = (int)OreType;
 
         currentDurability = durability;
     }
