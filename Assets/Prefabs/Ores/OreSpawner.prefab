@@ -44,12 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_OrePrefabs:
-  - {fileID: 3406544533533101189, guid: af0a775b8813ef6408ff888ca916fe6c, type: 3}
-  m_OreMaterials:
-  - {fileID: 2100000, guid: a67713fb7d8f6244c83c578012d344cc, type: 2}
-  - {fileID: 2100000, guid: aaa1480e43843494a96c2ed8acdfe698, type: 2}
-  - {fileID: 2100000, guid: a70524ba99040474e983a1964ee40a1c, type: 2}
-  - {fileID: 2100000, guid: 955d38f95f2d02a48b2053a573d40c9d, type: 2}
-  - {fileID: 2100000, guid: f48044801beb4a941836f881afb1e548, type: 2}
+  - {fileID: 4413986994579901686, guid: d5bd984383cd2034b8ffcf11e2d7df5c, type: 3}
+  - {fileID: 4413986994579901686, guid: db3c836e2d998094c84b9918b71934d3, type: 3}
+  - {fileID: 4413986994579901686, guid: f4dacda1addb7144d8c9996b55243c49, type: 3}
+  - {fileID: 4413986994579901686, guid: 3651444f4d505d940b2826f3e9b76b92, type: 3}
+  - {fileID: 4413986994579901686, guid: becd47140a9ef3f4f9dc0d079d727239, type: 3}
   m_Radius: 1
-  m_CurrentFloor: 1

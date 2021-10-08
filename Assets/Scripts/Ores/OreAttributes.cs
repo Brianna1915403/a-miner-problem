@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum ORE_TYPE { SILVER, COPPER, GOLD, ELECTRUM, PLATINUM}
+public enum ORE_TYPE { SILVER, COPPER, GOLD, ELECTRUM, PLATINUM }
 
 public class OresAttributes : MonoBehaviour
 {
