@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
-public class OreSpawner : MonoBehaviour {
-
+public class OreSpawner : MonoBehaviour 
+{
+    [SerializeField] private MineFloor m_MineFloor;
     [SerializeField] private GameObject[] m_OrePrefabs;
     [SerializeField] private float m_Radius = 1f;
         
     // Start is called before the first frame update
     void Start()
     {
+        m_MineFloor = gameObject.transform.parent.GetComponentInParent<MineFloor>();
         //SpawnOre();
     }
 
@@ -18,21 +19,53 @@ public class OreSpawner : MonoBehaviour {
     /// Spawns an ore at a random 'x' and 'z' coordonate within a sphere's radius.
     /// </summary>
     public void SpawnOre() {
-        GameObject ore = Instantiate(m_OrePrefabs[Random.Range(0, m_OrePrefabs.Length)], GetOreSpawnPosition(), transform.rotation);
-        SetOreAttributes(ore);
-    }
+        // Decide which ore is spawning
+        float sum = 0f;
+        float[] ores = new float[m_MineFloor.OreDistribution.Count];
+        for (int i = 0; i < m_MineFloor.OreDistribution.Count; ++i)
+        {   
+            sum += m_MineFloor.OreDistribution[(ORE_TYPE)i] * 10;
+            ores[i] = sum;
+        }
 
-    public void SetOreAttributes(GameObject ore)
-    {
-        OresAttributes attributes = ore.GetComponent<OresAttributes>();
+        PrintArray(ores);
 
-    }
+        float choice = Random.Range(0, (ores[ores.Length - 1] + 1));
+        int ore = -1;
 
-    public Material GetOreRarity()
-    {
-        // Depending on the current floor, the rarity of the ore will rise in bouts of 10
-        // Default value + (num of floor * percentage) = rarity for a single ore | 
-        return null;
+        for (int i = 0; i <= ores.Length; ++i)
+        {
+            if (i == 0)
+            {
+                if (choice >= 0 && choice <= ores[i])
+                {
+                    ore = i;
+                    break;
+                }
+            }
+            else if (i == ores.Length)
+            {
+                if (choice > ores[i - 1])
+                {
+                    ore = i - 1;
+                    break;
+                }
+            }
+            else
+            {
+                if (choice > ores[i - 1] && choice <= ores[i])
+                {
+                    ore = i;
+                    break;
+                }
+            }
+        }
+
+        Debug.Log($"Choice: {choice} | Ore: {ore}");
+
+        GameObject oreObj = Instantiate(m_OrePrefabs[ore], GetOreSpawnPosition(), transform.rotation);
+        oreObj.transform.parent = this.transform;
+        //SetOreAttributes(ore);
     }
 
     /// <summary>
@@ -74,6 +107,17 @@ public class OreSpawner : MonoBehaviour {
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, m_Radius);
+    }
+
+
+    private void PrintArray(float[] arr)
+    {
+        string str = "";
+        foreach (float item in arr)
+        {
+            str += item + " | ";
+        }
+        Debug.Log(str);
     }
 }
 
