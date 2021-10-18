@@ -16,11 +16,15 @@ using UnityEngine.UI;
 
 public class FirstPersonController : MonoBehaviour
 {
+
     private Rigidbody rb;
 
     #region Camera Movement Variables
 
     public Camera playerCamera;
+
+    public Transform destinationObject;
+    
 
     public float fov = 60f;
     public bool invertCamera = false;
@@ -51,6 +55,10 @@ public class FirstPersonController : MonoBehaviour
     private bool isZoomed = false;
 
     #endregion
+    #endregion
+
+    #region Interaction Distance
+    public bool isSeeingObject;
     #endregion
 
     #region Movement Variables
@@ -358,6 +366,8 @@ public class FirstPersonController : MonoBehaviour
 
         CheckGround();
 
+        CheckVision();
+
         if(enableHeadBob)
         {
             HeadBob();
@@ -457,6 +467,16 @@ public class FirstPersonController : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+    private void CheckVision(){
+        Vector3 origin = new Vector3(transform.position.x, transform.position.y + (transform.localScale.y * .5f), transform.position.z);
+        Vector3 direction = transform.TransformDirection(new Vector3(0, 0, 1));
+        float distance = 3.3f;
+
+        Debug.DrawRay(origin, direction * distance, Color.red);
+        Debug.Log("Origin: " + origin);
+        Debug.Log("Direction: " + direction);
     }
 
     private void Jump()
