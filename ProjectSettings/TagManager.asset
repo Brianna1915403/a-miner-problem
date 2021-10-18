@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Destination
   - Ore
+  - Mining Box
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,7 @@ public class OreAttributes : MonoBehaviour
     public int durability = 1;
     [SerializeField] private RARITY m_Rarity = RARITY.COMMON;
     public int currentDurability;
+    [SerializeField] private GameObject m_OreChunkPrefab;
 
     public ORE_TYPE OreType {
         set { m_OreType = value; }
@@ -33,13 +34,25 @@ public class OreAttributes : MonoBehaviour
         currentDurability = durability;
     }
 
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Mining Box")) {
+            TakeDamage(1);
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         currentDurability -= damage;
+        SpawnOreChunk(); // Tests
+
         if(currentDurability <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    private void SpawnOreChunk() {
+        Instantiate(m_OreChunkPrefab, transform.position, Quaternion.identity);
     }
 
     public static RARITY OreTypeToRarity(ORE_TYPE type)

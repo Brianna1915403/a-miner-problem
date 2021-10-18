@@ -475,8 +475,8 @@ public class FirstPersonController : MonoBehaviour
         float distance = 3.3f;
 
         Debug.DrawRay(origin, direction * distance, Color.red);
-        Debug.Log("Origin: " + origin);
-        Debug.Log("Direction: " + direction);
+        //Debug.Log("Origin: " + origin);
+        //Debug.Log("Direction: " + direction);
     }
 
     private void Jump()
