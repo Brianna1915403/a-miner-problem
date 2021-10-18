@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3200232306300955797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3200232306300955795}
+  - component: {fileID: 3200232306300955792}
+  m_Layer: 0
+  m_Name: OreSpawner
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3200232306300955795
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3200232306300955797}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3200232306300955792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3200232306300955797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa1cfef71178a541bd3f103972709e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MineFloor: {fileID: 0}
+  m_OrePrefabs:
+  - {fileID: 4413986994579901686, guid: f4dacda1addb7144d8c9996b55243c49, type: 3}
+  - {fileID: 4413986994579901686, guid: d5bd984383cd2034b8ffcf11e2d7df5c, type: 3}
+  - {fileID: 4413986994579901686, guid: becd47140a9ef3f4f9dc0d079d727239, type: 3}
+  - {fileID: 4413986994579901686, guid: 3651444f4d505d940b2826f3e9b76b92, type: 3}
+  - {fileID: 4413986994579901686, guid: db3c836e2d998094c84b9918b71934d3, type: 3}
+  m_Radius: 1
