@@ -11,9 +11,10 @@ public class PickUpItem : MonoBehaviour
     {
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Rigidbody>().isKinematic = true;
+
+        dest = GameObject.FindWithTag("Destination").transform;
         this.transform.position = dest.position;
-        this.transform.parent = GameObject.FindWithTag("Destination").transform;
-        Debug.Log(GameObject.FindWithTag("Destination"));
+        this.transform.parent = dest.transform;
         this.GetComponent<Rigidbody>().velocity = Vector3.zero;
         this.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     }
