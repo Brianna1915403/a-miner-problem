@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateTorque: 1
-  hoverHeight: 2
+  hoverHeight: 1.25
   hoverForce: 15
   hoverDamp: 0.5
 --- !u!114 &6020101087308161800

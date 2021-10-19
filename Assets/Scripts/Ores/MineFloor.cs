@@ -29,6 +29,7 @@ public class MineFloor : MonoBehaviour
 
     private void Start() {
         m_OreSpawnerAmount = transform.childCount > 0 ? transform.GetChild(0).childCount : 0;
+        //TODO: Remove
         GenerateOreDisribution();
         GeneratesOres();
     }
