@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3221553738492131841}
   - component: {fileID: -56047754862236482}
   - component: {fileID: 6020101087308161800}
+  - component: {fileID: -2646999959598355153}
   m_Layer: 0
   m_Name: OreChunk
   m_TagString: Untagged
@@ -143,3 +144,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dest: {fileID: 0}
+--- !u!114 &-2646999959598355153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5045599558216147554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2852356e764e2da4099ce31259eef0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OreType: 0

@@ -64,8 +64,8 @@ public class OreSpawner : MonoBehaviour
         Debug.Log($"Choice: {choice} | Ore: {ore}");
 
         GameObject oreObj = Instantiate(m_OrePrefabs[ore], GetOreSpawnPosition(), transform.rotation);
-        oreObj.transform.parent = this.transform;
-        //SetOreAttributes(ore);
+        oreObj.transform.parent = transform.parent;
+        Destroy(gameObject);
     }
 
     /// <summary>

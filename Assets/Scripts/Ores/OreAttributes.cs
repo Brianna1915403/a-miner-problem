@@ -34,11 +34,11 @@ public class OreAttributes : MonoBehaviour
         currentDurability = durability;
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Mining Box")) {
-            TakeDamage(1);
-        }
-    }
+    //private void OnTriggerEnter(Collider other) {
+    //    if (other.CompareTag("Mining Box")) {
+    //        TakeDamage(1);
+    //    }
+    //}
 
     public void TakeDamage(int damage)
     {
@@ -52,7 +52,10 @@ public class OreAttributes : MonoBehaviour
     }
 
     private void SpawnOreChunk() {
-        Instantiate(m_OreChunkPrefab, transform.position, Quaternion.identity);
+        GameObject oreChunk = Instantiate(m_OreChunkPrefab, transform.position, Quaternion.identity);
+        oreChunk.transform.parent = transform.parent;
+        oreChunk.GetComponent<OreChunk>().OreType = m_OreType;
+        oreChunk.GetComponent<Renderer>().material = this.GetComponent<Renderer>().material;
     }
 
     public static RARITY OreTypeToRarity(ORE_TYPE type)

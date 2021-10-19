@@ -28,7 +28,7 @@ public class MineFloor : MonoBehaviour
     }
 
     private void Start() {
-        m_OreSpawnerAmount = transform.childCount > 0 ? transform.GetChild(0).childCount : 0;
+        m_OreSpawnerAmount = transform.childCount > 0 ? transform.GetChild(transform.childCount - 1).childCount : 0;
         //TODO: Remove
         GenerateOreDisribution();
         GeneratesOres();
@@ -64,7 +64,7 @@ public class MineFloor : MonoBehaviour
     /// </summary>
     private void GeneratesOres()
     {
-        OreSpawner[] oreSpawners = transform.GetChild(0).GetComponentsInChildren<OreSpawner>();
+        OreSpawner[] oreSpawners = transform.transform.GetChild(transform.childCount - 1).GetComponentsInChildren<OreSpawner>();
         foreach (var item in oreSpawners)
         {
             item.SpawnOre();
