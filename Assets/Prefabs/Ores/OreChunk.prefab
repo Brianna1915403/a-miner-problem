@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -2646999959598355153}
   m_Layer: 0
   m_Name: OreChunk
-  m_TagString: Untagged
+  m_TagString: Pickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dest: {fileID: 0}
+  isPicked: 0
 --- !u!114 &-2646999959598355153
 MonoBehaviour:
   m_ObjectHideFlags: 0
