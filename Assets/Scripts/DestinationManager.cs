@@ -6,6 +6,7 @@ public class DestinationManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject pickableItem;
+    public GameObject currentlyHoldingItem;
     public bool holdingItem = false;
     void Start()
     {
