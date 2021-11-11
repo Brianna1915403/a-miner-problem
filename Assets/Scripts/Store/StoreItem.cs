@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoreItem : MonoBehaviour
+public class StoreItem
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public enum ItemType{
+        Pickaxe,
+        TrainPart,
+        Wagon
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public static int[] GetCost(ItemType itemType){
+        switch(itemType){
+            default:
+            case ItemType.Pickaxe:   return new int[]{0,0,0,0,0};
+            case ItemType.TrainPart: return new int[]{0,0,0,0,0};
+            case ItemType.Wagon:     return new int[]{0,0,0,0,0};
+        }
     }
+
+    // public static Sprite GetSprite(ItemType itemType){
+    //     switch (itemType)
+    //     {
+    //         default:
+    //         case ItemType.Pickaxe:   return GameAssets.i.s_Pickaxe;
+    //         case ItemType.TrainPart: return GameAssets.i.s_TrainPart;
+    //         case ItemType.Wagon:     return GameAssets.i.s_Wagon;
+    //     }
+    // }
 }
