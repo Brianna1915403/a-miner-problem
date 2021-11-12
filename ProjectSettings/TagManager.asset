@@ -8,6 +8,8 @@ TagManager:
   - Ore
   - Mining Box
   - Pickable
+  - name
+  - shopItemTemplate
   layers:
   - Default
   - TransparentFX
