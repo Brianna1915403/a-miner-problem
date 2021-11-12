@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3791870677156040395}
   - component: {fileID: 3791870677154941963}
   - component: {fileID: 3791870677156942536}
+  - component: {fileID: 6622999361277978866}
   m_Layer: 0
   m_Name: Lantern
   m_TagString: Untagged
@@ -97,6 +98,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: fc94681f067d1374cbdb94e9f4e714fa, type: 3}
+--- !u!114 &6622999361277978866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3791870677156942539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9695a76ed1b1a6e47a068bdb1c95c239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightBox: {fileID: 6284012404742626305}
 --- !u!1 &6388524789426602562
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +123,7 @@ GameObject:
   - component: {fileID: 4625494169143560934}
   - component: {fileID: 1067153559475357222}
   - component: {fileID: 7626932774500962133}
+  - component: {fileID: 6284012404742626305}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -192,3 +207,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6284012404742626305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6388524789426602562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a048129830eeed849951356778e46294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isOn: 0
+  m_LightOn: {fileID: 2100000, guid: 2ccdb176d721ff449a951bc73741fc0b, type: 2}
+  m_LightOff: {fileID: 2100000, guid: 0e2be3f8ab6d7274ba72672da782ced9, type: 2}
