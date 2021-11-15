@@ -6,17 +6,19 @@ using TMPro;
 
 public class StoreManagement : MonoBehaviour
 {
-    private Transform container;
-    private GameObject shopItemTemplate;
+    private RectTransform container;
+    [SerializeField] private GameObject shopItemTemplate;
     
     private void Awake(){
-        container = transform.Find("Container");
+        container = transform.Find("Container").gameObject.GetComponent<RectTransform>();
         shopItemTemplate = GameObject.FindGameObjectWithTag("shopItemTemplate");
         shopItemTemplate.gameObject.SetActive(true);
     }
 
     private void Start() {
-        CreateItemButton("Pickaxe", StoreItem.GetCost(StoreItem.ItemType.Pickaxe), 0);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        //CreateItemButton("Pickaxe", StoreItem.GetCost(StoreItem.ItemType.Pickaxe), 0);
         CreateItemButton("TrainPart", StoreItem.GetCost(StoreItem.ItemType.TrainPart), 1);
         CreateItemButton("Wagon", StoreItem.GetCost(StoreItem.ItemType.Wagon), 2);
     }
@@ -25,18 +27,18 @@ public class StoreManagement : MonoBehaviour
         GameObject shopItemTransform = Instantiate(shopItemTemplate, container);
         RectTransform shopItemRectTransform = shopItemTransform.GetComponent<RectTransform>();
 
-        float shopItemHeight = 30f;
-        shopItemRectTransform.anchoredPosition = new Vector2(0, -shopItemHeight * positionIndex);
+        float spacing = -50f;
+        shopItemRectTransform.anchoredPosition = new Vector2(0, spacing * positionIndex);
 
-        //Debug.Log(shopItemTransform.transform.Find("nameText"));
+        Transform text = shopItemTransform.transform.GetChild(1);
 
-        shopItemTransform.GetComponent<TextMeshProUGUI>().SetText(itemName);
-        
-        shopItemTransform.GetComponent<TextMeshProUGUI>().SetText(itemCost[0].ToString());
-        shopItemTransform.GetComponent<TextMeshProUGUI>().SetText(itemCost[1].ToString());
-        shopItemTransform.GetComponent<TextMeshProUGUI>().SetText(itemCost[2].ToString());
-        shopItemTransform.GetComponent<TextMeshProUGUI>().SetText(itemCost[3].ToString());
-        shopItemTransform.GetComponent<TextMeshProUGUI>().SetText(itemCost[4].ToString());
+        text.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(itemName);
+
+        Debug.Log(itemCost[1]);
+
+        for (int i = 1; i < text.childCount; i++){
+            text.transform.GetChild(i).GetComponent<TextMeshProUGUI>().SetText(itemCost[i-1].ToString());
+        }
 
         //shopItemTransform.Find("itemImage").GetComponent<Image>().sprite = itemSprite;
     }

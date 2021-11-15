@@ -15,7 +15,7 @@ public class StoreItem
             default:
             case ItemType.Pickaxe:   return new int[]{1,2,3,4,5};
             case ItemType.TrainPart: return new int[]{6,7,8,9,10};
-            case ItemType.Wagon:     return new int[]{11,12,13,14,15};
+            case ItemType.Wagon:     return new int[]{111,112,113,114,115};
         }
     }
 
