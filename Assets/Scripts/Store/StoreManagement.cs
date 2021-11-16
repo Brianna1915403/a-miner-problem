@@ -18,17 +18,22 @@ public class StoreManagement : MonoBehaviour
     private void Start() {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        //CreateItemButton("Pickaxe", StoreItem.GetCost(StoreItem.ItemType.Pickaxe), 0);
-        CreateItemButton("TrainPart", StoreItem.GetCost(StoreItem.ItemType.TrainPart), 1);
-        CreateItemButton("Wagon", StoreItem.GetCost(StoreItem.ItemType.Wagon), 2);
+        CreateItemButton("Pickaxe_2", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_2), 0, 1);
+        CreateItemButton("Pickaxe_3", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_3), 0, 2);
+        CreateItemButton("Pickaxe_4", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_4), 0, 3);
+        CreateItemButton("TrainPart_1", StoreItem.GetCost(StoreItem.ItemType.TrainPart_1), -485, 0);
+        CreateItemButton("TrainPart_2", StoreItem.GetCost(StoreItem.ItemType.TrainPart_2), -485, 1);
+        CreateItemButton("TrainPart_3", StoreItem.GetCost(StoreItem.ItemType.TrainPart_3), -485, 2);
+        CreateItemButton("TrainPart_4", StoreItem.GetCost(StoreItem.ItemType.TrainPart_4), -485, 3);
+        CreateItemButton("Wagon", StoreItem.GetCost(StoreItem.ItemType.Wagon), -485, 7);
     }
 
-    private void CreateItemButton(string itemName, int[] itemCost, int positionIndex){
+    private void CreateItemButton(string itemName, int[] itemCost, int xPositionIndex, int yPositionIndex){
         GameObject shopItemTransform = Instantiate(shopItemTemplate, container);
         RectTransform shopItemRectTransform = shopItemTransform.GetComponent<RectTransform>();
 
         float spacing = -50f;
-        shopItemRectTransform.anchoredPosition = new Vector2(0, spacing * positionIndex);
+        shopItemRectTransform.anchoredPosition = new Vector2(xPositionIndex, spacing * yPositionIndex);
 
         Transform text = shopItemTransform.transform.GetChild(1);
 
