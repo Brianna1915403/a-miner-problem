@@ -19,10 +19,8 @@ public class Lantern : MonoBehaviour
     }
 
     void OnMouseOver() {
-        // Debug.Log($"Looking @ {transform.name}");
         if (Input.GetMouseButtonDown(0) && !m_LightBox.IsOn) {
-            m_LightBox.IsOn = !m_LightBox.IsOn;
-            m_LightBox.UpdateLightMaterial();
+            m_LightBox.TurnOn();
         }
     }
 }

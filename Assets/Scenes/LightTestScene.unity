@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -4591,6 +4591,10 @@ PrefabInstance:
     - target: {fileID: 3791870677156942539, guid: f5beb3f3f9d9560438ce386a4f65092d, type: 3}
       propertyPath: m_Name
       value: Lantern (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791870677156942539, guid: f5beb3f3f9d9560438ce386a4f65092d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3791870677156942539, guid: f5beb3f3f9d9560438ce386a4f65092d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10134,10 +10138,14 @@ PrefabInstance:
     - target: {fileID: 1067153559475357222, guid: f5beb3f3f9d9560438ce386a4f65092d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2ccdb176d721ff449a951bc73741fc0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 0e2be3f8ab6d7274ba72672da782ced9, type: 2}
     - target: {fileID: 3791870677156942539, guid: f5beb3f3f9d9560438ce386a4f65092d, type: 3}
       propertyPath: m_Name
       value: Lantern
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791870677156942539, guid: f5beb3f3f9d9560438ce386a4f65092d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3791870677156942539, guid: f5beb3f3f9d9560438ce386a4f65092d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10198,10 +10206,6 @@ PrefabInstance:
     - target: {fileID: 3791870677157367531, guid: f5beb3f3f9d9560438ce386a4f65092d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6284012404742626305, guid: f5beb3f3f9d9560438ce386a4f65092d, type: 3}
-      propertyPath: m_isOn
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6388524789426602562, guid: f5beb3f3f9d9560438ce386a4f65092d, type: 3}
       propertyPath: m_Name

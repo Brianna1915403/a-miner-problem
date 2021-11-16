@@ -28,8 +28,9 @@ public class LightBox : MonoBehaviour
         
     }
 
-    private void OnMouseOver() {
-        
+    public void TurnOn() {
+        IsOn = !IsOn;
+        UpdateLightMaterial();
     }
 
     public void UpdateLightMaterial() {
