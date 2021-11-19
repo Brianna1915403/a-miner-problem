@@ -46,5 +46,11 @@ public class StoreManagement : MonoBehaviour
         }
 
         //shopItemTransform.Find("itemImage").GetComponent<Image>().sprite = itemSprite;
+
+        
+    }
+
+    private void TryBuyItem(StoreItem.ItemType itemType){
+
     }
 }
