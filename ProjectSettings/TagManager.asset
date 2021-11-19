@@ -8,6 +8,7 @@ TagManager:
   - Ore
   - Mining Box
   - Pickable
+  - Activatable
   layers:
   - Default
   - TransparentFX
