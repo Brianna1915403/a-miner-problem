@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+
 
 public class DestinationManager : MonoBehaviour
 {
@@ -8,17 +11,23 @@ public class DestinationManager : MonoBehaviour
     public GameObject pickableItem;
     public GameObject currentlyHoldingItem;
     public bool holdingItem = false;
+
+    public TMP_Text pickUpText;
+    public TMP_Text activateText;
+
+    public Image e_button;
+    public Image f_button;
+
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        
         pickableItem = FindClosestPickableOre();
     }
+
 
     public GameObject FindClosestPickableOre()
     {
