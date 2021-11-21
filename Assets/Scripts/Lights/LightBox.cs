@@ -11,29 +11,33 @@ public class LightBox : MonoBehaviour
     [SerializeField] private Material m_LightOn;
     [SerializeField] private Material m_LightOff;
 
+    [Header("Light")]
+    [SerializeField] private Light m_Light;
+    [SerializeField] private float m_Radius = 10f;
+
     public bool IsOn {
         set { m_isOn = value; }
         get { return m_isOn; }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public float Radius
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        set { m_Radius = value; }
+        get { return m_Radius; }
     }
 
     public void TurnOn() {
         IsOn = !IsOn;
         UpdateLightMaterial();
+        UpdateLight();
     }
 
-    public void UpdateLightMaterial() {
+    private void UpdateLightMaterial() {
         gameObject.GetComponent<Renderer>().material = m_isOn? m_LightOn : m_LightOff;
+    }
+
+    private void UpdateLight()
+    {
+        m_Light.enabled = m_isOn;
     }
 }
