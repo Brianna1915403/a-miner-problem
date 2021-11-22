@@ -111,7 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LightBox: {fileID: 6284012404742626305}
-  m_FearReducer: 10
+  m_FearReducer: 2
+  m_CanAcivate: 0
 --- !u!1 &6388524789426602562
 GameObject:
   m_ObjectHideFlags: 0
