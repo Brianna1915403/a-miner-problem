@@ -23,6 +23,7 @@ public class ActivateMinecart : MonoBehaviour
         isActivated = pathFollower.speed != 0 ? true : false;
         if (other.gameObject.CompareTag("Destination"))
         {
+            Debug.Log(Input.GetAxis("Activate"));
             if (Input.GetAxis("Activate") == 1)
             {
                 if (isOnCooldown == false && isActivated == false)

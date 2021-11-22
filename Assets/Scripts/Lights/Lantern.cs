@@ -15,7 +15,8 @@ public class Lantern : MonoBehaviour
         {
             if (collider.gameObject.CompareTag("Player"))
             {
-                if (m_LightBox.IsOn) {
+                if (m_LightBox.IsOn)
+                {
                     float distanceFromPlayer = Vector3.Distance(collider.transform.position, transform.position);
                     // The larger the number the less Fear is recovered
                     float distance = distanceFromPlayer - 1 < 1 ? 1 : distanceFromPlayer - 1;
@@ -23,17 +24,23 @@ public class Lantern : MonoBehaviour
                     Player.Instance.Fear -= Player.Instance.Fear <= 0 ? 0 : reduction;
                     Debug.Log($"Reduction: {reduction}");
                     Debug.Log("Orphans in my basement!!!!!");
-                } else {
+                }
+                else
+                {
                     m_CanAcivate = true;
                 }
-            } else {
-                m_CanAcivate = false;       
-            }                   
-        }  
+            }
+            else
+            {
+                m_CanAcivate = false;
+            }
+        }
     }
 
-    void OnMouseOver() {
-        if (!m_LightBox.IsOn && m_CanAcivate && Input.GetKeyDown(KeyCode.E)) {
+    void OnMouseOver()
+    {
+        if (!m_LightBox.IsOn && m_CanAcivate && Input.GetKeyDown(KeyCode.E))
+        {
             m_LightBox.TurnOn();
         }
     }
