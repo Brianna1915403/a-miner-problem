@@ -9,6 +9,9 @@ TagManager:
   - Mining Box
   - Pickable
   - Activatable
+  - name
+  - shopItemTemplate
+  - Shop
   layers:
   - Default
   - TransparentFX
