@@ -211,28 +211,31 @@ public class FirstPersonController : MonoBehaviour
     private void Update()
     {
         #region Camera
-
-        // Control camera movement
-        if(cameraCanMove)
+        if (!PauseMenu.GameIsPaused)
         {
-            yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
-
-            if (!invertCamera)
+            // Control camera movement
+            if (cameraCanMove)
             {
-                pitch -= mouseSensitivity * Input.GetAxis("Mouse Y");
-            }
-            else
-            {
-                // Inverted Y
-                pitch += mouseSensitivity * Input.GetAxis("Mouse Y");
-            }
+                yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
 
-            // Clamp pitch between lookAngle
-            pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
+                if (!invertCamera)
+                {
+                    pitch -= mouseSensitivity * Input.GetAxis("Mouse Y");
+                }
+                else
+                {
+                    // Inverted Y
+                    pitch += mouseSensitivity * Input.GetAxis("Mouse Y");
+                }
 
-            transform.localEulerAngles = new Vector3(0, yaw, 0);
-            playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+                // Clamp pitch between lookAngle
+                pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
+
+                transform.localEulerAngles = new Vector3(0, yaw, 0);
+                playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+            }
         }
+        
 
         #region Camera Zoom
 
