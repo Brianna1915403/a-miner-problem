@@ -6,36 +6,34 @@ public class Lantern : MonoBehaviour
 {
     [SerializeField] private LightBox m_LightBox;
     [SerializeField] private float m_FearReducer;
+    [SerializeField] private bool m_CanAcivate = false;
 
-    // Start is called before the first frame update
-    void Start()
+    void FixedUpdate()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (m_LightBox.IsOn)
+        Collider[] colliders = Physics.OverlapSphere(transform.position, m_LightBox.Radius);
+        foreach (Collider collider in colliders)
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, m_LightBox.Radius);
-            foreach (Collider collider in colliders)
+            if (collider.gameObject.CompareTag("Player"))
             {
-                if (collider.gameObject.CompareTag("Player"))
-                {
+                if (m_LightBox.IsOn) {
                     float distanceFromPlayer = Vector3.Distance(collider.transform.position, transform.position);
-                    Debug.Log($"Distance: {distanceFromPlayer}");
                     // The larger the number the less Fear is recovered
                     float distance = distanceFromPlayer - 1 < 1 ? 1 : distanceFromPlayer - 1;
                     float reduction = m_FearReducer / distance;
+                    Player.Instance.Fear -= Player.Instance.Fear <= 0 ? 0 : reduction;
                     Debug.Log($"Reduction: {reduction}");
-                }                    
-            }
-        }
+                    Debug.Log("Orphans in my basement!!!!!");
+                } else {
+                    m_CanAcivate = true;
+                }
+            } else {
+                m_CanAcivate = false;       
+            }                   
+        }  
     }
 
     void OnMouseOver() {
-        if (!m_LightBox.IsOn && Input.GetMouseButtonDown(0)) {
+        if (!m_LightBox.IsOn && m_CanAcivate && Input.GetKeyDown(KeyCode.E)) {
             m_LightBox.TurnOn();
         }
     }
