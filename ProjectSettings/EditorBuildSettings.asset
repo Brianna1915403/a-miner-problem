@@ -13,5 +13,17 @@ EditorBuildSettings:
     guid: 4aec3492600722d4aaf2a1c37f71931c
   - enabled: 1
     path: Assets/Scenes/Floors/Floor1Scene.unity
-    guid: 653b3ccc914c86c4ea652414514129f5
+    guid: d8d462cbb6c93d248ad84ddefd557901
+  - enabled: 1
+    path: Assets/Scenes/Floors/Floor2Scene.unity
+    guid: 88ac716074d9b2042b34ace18aa04ae4
+  - enabled: 1
+    path: Assets/Scenes/Floors/Floor3Scene.unity
+    guid: a8ba638e5670112439dfd7595c938f8f
+  - enabled: 1
+    path: Assets/Scenes/Floors/Floor4Scene.unity
+    guid: d2107b838091c184780c83afab4f6342
+  - enabled: 1
+    path: Assets/Scenes/Floors/BonusFloor.unity
+    guid: 5c2937d5e51cfb24f88cbd9397070bbd
   m_configObjects: {}
