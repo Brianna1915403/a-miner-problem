@@ -17,7 +17,7 @@ public class StoreManagement : MonoBehaviour
     }
 
     private void Start() {
-        
+        Debug.Log("Coordinates of shop item panel: "+shopItemTemplate.transform.position);
         CreateItemButton(StoreItem.ItemType.Pickaxe_2, "Pickaxe_2", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_2), 0, 1);
         CreateItemButton(StoreItem.ItemType.Pickaxe_3, "Pickaxe_3", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_3), 0, 2);
         CreateItemButton(StoreItem.ItemType.Pickaxe_4, "Pickaxe_4", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_4), 0, 3);
