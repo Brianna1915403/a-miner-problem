@@ -16,11 +16,17 @@ public class Player : MonoBehaviour
     #endregion
 
     [Header("Fear")]
+    [SerializeField] private bool m_InMine = false;
     [SerializeField] private float m_Fear = 0f;
     [SerializeField] private float m_FearIncrement = 1f;
     [SerializeField] private float m_Delay = 2f;
     [SerializeField] private float m_TargetTime = 0f;
     [SerializeField] private float m_CurrentTime = 0f;
+
+    public bool InMine {
+        set { m_InMine = value; }
+        get { return m_InMine; }
+    }
 
     public float Fear {
         set { m_Fear = value; }
@@ -35,10 +41,12 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         m_CurrentTime += Time.deltaTime;
-        if (m_CurrentTime >= m_TargetTime) {
+        if (m_InMine && m_CurrentTime >= m_TargetTime) {
             m_Fear += m_FearIncrement;
             m_TargetTime = m_CurrentTime + m_Delay;
             Debug.Log($"Target Time: {m_TargetTime}");
+        } else {
+            m_Fear = 0;
         }
         Debug.Log($"Current Time: {m_CurrentTime}");
     }
