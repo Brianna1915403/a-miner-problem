@@ -8,24 +8,29 @@ public class ShopTriggerCollider : MonoBehaviour
 
     public float m_Radius = 5f;
 
+    private bool StoreIsOpen = false;
+
     private void Update() {
         Collider[] colliders = Physics.OverlapSphere(transform.position, m_Radius);
         foreach(Collider collider in colliders){
-            if(collider.CompareTag("Player")){
-                Debug.Log("Orphans in my basement");
-                if(Input.GetKeyDown("q")){
+            if(collider.CompareTag("Player") && Input.GetKeyDown("e")){
+                if(!StoreIsOpen){
                     Debug.Log("The shop is open");
                     ShopPanel.SetActive(true);
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
                     Time.timeScale = 0;
+                    StoreIsOpen = true;
+                    return;
                 }
-                if(Input.GetKeyDown("z")){
+                if(StoreIsOpen){
                     Debug.Log("The shop is close");
                     ShopPanel.SetActive(false);
                     Cursor.visible = false;
                     Cursor.lockState = CursorLockMode.Locked;
-                    Time.timeScale = 1  ;
+                    Time.timeScale = 1;
+                    StoreIsOpen = false;
+                    return;
                 }
             }
         }
