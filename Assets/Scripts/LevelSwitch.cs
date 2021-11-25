@@ -12,8 +12,11 @@ public class LevelSwitch : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(scene);
-        Player.Instance.InMine = scene > m_OverworldScene;
-    }      
+        if (other.gameObject.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(scene);
+            Player.Instance.InMine = scene > m_OverworldScene;
+        }
+    }
 
 }
