@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float m_Delay = 2f;
     [SerializeField] private float m_TargetTime = 0f;
     [SerializeField] private float m_CurrentTime = 0f;
+    
+    [Header("Ore")]
+    [SerializeField] public StoreOres storeOres;
 
     public bool InMine {
         set { m_InMine = value; }
@@ -31,6 +34,14 @@ public class Player : MonoBehaviour
     public float Fear {
         set { m_Fear = value; }
         get { return m_Fear; }
+    }
+
+    public List<string> OreName{
+        get { return storeOres.ore_name; }
+    }
+
+    public List<int> OreCount{
+        get { return storeOres.ore_count; }
     }
 
     void Start() {

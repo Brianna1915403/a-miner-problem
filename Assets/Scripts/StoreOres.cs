@@ -5,6 +5,17 @@ using System.Linq;
 
 public class StoreOres : MonoBehaviour
 {
+    #region Singleton
+        private static StoreOres m_Instance;
+        public static StoreOres Instance { 
+            get {
+                if (!m_Instance)
+                    m_Instance = FindObjectOfType<StoreOres>();            
+                return m_Instance; 
+            } 
+        }
+    #endregion
+
     public List<string> ore_name = new List<string>();
     public List<int> ore_count = new List<int>();
     public int total_ores;

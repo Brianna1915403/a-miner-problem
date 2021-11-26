@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IShopCustomer
 {
     void BoughtItem(StoreItem.ItemType itemType);
-    bool TrySpendOreAmount(int[] oreAmount);
+    bool TrySpendOreAmount(List<int> oreAmount);
 }

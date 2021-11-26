@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class StoreInteraction : MonoBehaviour, IShopCustomer
 {
-    private int[] oreAmount;
+    private List<string> oreName = Player.Instance.OreName;
+    private List<int> oreCount = Player.Instance.OreCount;
 
     public void BoughtItem(StoreItem.ItemType itemType)
     {
         throw new System.NotImplementedException();
     }
 
-    public bool TrySpendOreAmount(int[] oreAmount)
+    public bool TrySpendOreAmount(List<int> oreAmountRequired)
     {
-        bool result = false;
+        // Debug.Log(oreName);
+        // Debug.Log(oreCount);
 
         for(int i = 0; i < 5; i++){
-            if(!(oreAmount[i] >= oreAmount[i]) ){
-                result = false;
-            }
-            else{
-                result = true;
+            if(oreAmountRequired[i] > oreCount[i]){
+                return false;
+            }else{
+                oreCount[i] -= oreAmountRequired[i];
             }
         }
 
-        return result;
+        return true;
     }
 }
