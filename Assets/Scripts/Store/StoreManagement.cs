@@ -8,8 +8,6 @@ public class StoreManagement : MonoBehaviour
 {
     private RectTransform container;
     [SerializeField] private GameObject shopItemTemplate;
-    private IShopCustomer shopCustomer = new StoreInteraction();
-
     private List<string> oreName;
     private List<int> oreCount;
     
@@ -23,15 +21,15 @@ public class StoreManagement : MonoBehaviour
     }
 
     private void Start() {
-        CreateItemButton(StoreItem.ItemType.Pickaxe_1, "Pickaxe_1", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_1), 0, 1);
-        CreateItemButton(StoreItem.ItemType.Pickaxe_2, "Pickaxe_2", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_2), 0, 2);
-        CreateItemButton(StoreItem.ItemType.Pickaxe_3, "Pickaxe_3", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_3), 0, 3);
-        CreateItemButton(StoreItem.ItemType.Pickaxe_4, "Pickaxe_4", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_4), 0, 4);
-        CreateItemButton(StoreItem.ItemType.TrainPart_1, "TrainPart_1", StoreItem.GetCost(StoreItem.ItemType.TrainPart_1), -485, 1);
-        CreateItemButton(StoreItem.ItemType.TrainPart_2, "TrainPart_2", StoreItem.GetCost(StoreItem.ItemType.TrainPart_2), -485, 2);
-        CreateItemButton(StoreItem.ItemType.TrainPart_3, "TrainPart_3", StoreItem.GetCost(StoreItem.ItemType.TrainPart_3), -485, 3);
-        CreateItemButton(StoreItem.ItemType.TrainPart_4, "TrainPart_4", StoreItem.GetCost(StoreItem.ItemType.TrainPart_4), -485, 4);
-        CreateItemButton(StoreItem.ItemType.Wagon, "Wagon", StoreItem.GetCost(StoreItem.ItemType.Wagon), -485, 7);
+        CreateItemButton(StoreItem.ItemType.Pickaxe_1, "Pickaxe_1", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_1), 0, 3);
+        CreateItemButton(StoreItem.ItemType.Pickaxe_2, "Pickaxe_2", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_2), 0, 4);
+        CreateItemButton(StoreItem.ItemType.Pickaxe_3, "Pickaxe_3", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_3), 0, 5);
+        CreateItemButton(StoreItem.ItemType.Pickaxe_4, "Pickaxe_4", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_4), 0, 6);
+        CreateItemButton(StoreItem.ItemType.TrainPart_1, "TrainPart_1", StoreItem.GetCost(StoreItem.ItemType.TrainPart_1), -485, 3);
+        CreateItemButton(StoreItem.ItemType.TrainPart_2, "TrainPart_2", StoreItem.GetCost(StoreItem.ItemType.TrainPart_2), -485, 4);
+        CreateItemButton(StoreItem.ItemType.TrainPart_3, "TrainPart_3", StoreItem.GetCost(StoreItem.ItemType.TrainPart_3), -485, 5);
+        CreateItemButton(StoreItem.ItemType.TrainPart_4, "TrainPart_4", StoreItem.GetCost(StoreItem.ItemType.TrainPart_4), -485, 6);
+        //CreateItemButton(StoreItem.ItemType.Wagon, "Wagon", StoreItem.GetCost(StoreItem.ItemType.Wagon), -485, 7);
 
         Hide();
     }
@@ -59,31 +57,30 @@ public class StoreManagement : MonoBehaviour
     }
 
     void TryBuyItem(List<int> itemCost, StoreItem.ItemType itemType){
-        List<int> x = new List<int>() {1,2,3,4,5};
-        // Debug.Log(itemType);
-        // Debug.Log(shopCustomer.TrySpendOreAmount(x));
-        // if(shopCustomer.TrySpendOreAmount(x)){
-        //     Debug.Log("In the if statement of TryBuyItem");
-        //     // can afford cost
-        //     shopCustomer.BoughtItem(itemType);
-        // }
-
-        Debug.Log(TrySpendOreAmount(itemCost));
+        if(TrySpendOreAmount(itemCost)){
+            Debug.Log("In the if statement of TryBuyItem");
+            // can afford cost
+            BoughtItem(itemType);
+        }
     }
 
     public bool TrySpendOreAmount(List<int> oreAmountRequired)
     {
-        Debug.Log(oreCount);
-
         for(int i = 0; i < 5; i++){
-            if(oreAmountRequired[i] > oreCount[i]){
-                return false;
-            }else{
-                oreCount[i] -= oreAmountRequired[i];
+            if(oreAmountRequired[i] > oreCount[i]){ 
+                return false; 
             }
+        }
+        for(int j = 0; j < 5; j++){ 
+            oreCount[j] -= oreAmountRequired[j]; 
         }
 
         return true;
+    }
+
+    public void BoughtItem(StoreItem.ItemType itemType)
+    {
+        Debug.Log("Item bought = " + itemType);
     }
 
     public void Hide(){
