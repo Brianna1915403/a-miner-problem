@@ -16,6 +16,14 @@ public class StoreOres : MonoBehaviour
         }
     #endregion
 
+    public List<string> OreName{
+        get { return ore_name; }
+    }
+
+    public List<int> OreCount{
+        get { return ore_count; }
+    }
+
     public List<string> ore_name = new List<string>();
     public List<int> ore_count = new List<int>();
     public int total_ores;

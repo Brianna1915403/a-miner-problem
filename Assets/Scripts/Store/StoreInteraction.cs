@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class StoreInteraction : MonoBehaviour, IShopCustomer
 {
-    private List<string> oreName = Player.Instance.OreName;
-    private List<int> oreCount = Player.Instance.OreCount;
 
     public void BoughtItem(StoreItem.ItemType itemType)
     {
@@ -17,13 +15,13 @@ public class StoreInteraction : MonoBehaviour, IShopCustomer
         // Debug.Log(oreName);
         // Debug.Log(oreCount);
 
-        for(int i = 0; i < 5; i++){
-            if(oreAmountRequired[i] > oreCount[i]){
-                return false;
-            }else{
-                oreCount[i] -= oreAmountRequired[i];
-            }
-        }
+        // for(int i = 0; i < 5; i++){
+        //     if(oreAmountRequired[i] > oreCount[i]){
+        //         return false;
+        //     }else{
+        //         oreCount[i] -= oreAmountRequired[i];
+        //     }
+        // }
 
         return true;
     }

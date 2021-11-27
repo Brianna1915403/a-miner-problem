@@ -9,15 +9,20 @@ public class StoreManagement : MonoBehaviour
     private RectTransform container;
     [SerializeField] private GameObject shopItemTemplate;
     private IShopCustomer shopCustomer = new StoreInteraction();
+
+    private List<string> oreName;
+    private List<int> oreCount;
     
     private void Awake(){
         container = transform.Find("Container").gameObject.GetComponent<RectTransform>();
         shopItemTemplate = GameObject.FindGameObjectWithTag("shopItemTemplate");
         shopItemTemplate.gameObject.SetActive(true);
+
+        oreName = StoreOres.Instance.OreName;
+        oreCount = StoreOres.Instance.OreCount;
     }
 
     private void Start() {
-        Debug.Log("Coordinates of shop item panel: "+shopItemTemplate.transform.position);
         CreateItemButton(StoreItem.ItemType.Pickaxe_1, "Pickaxe_1", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_1), 0, 1);
         CreateItemButton(StoreItem.ItemType.Pickaxe_2, "Pickaxe_2", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_2), 0, 2);
         CreateItemButton(StoreItem.ItemType.Pickaxe_3, "Pickaxe_3", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_3), 0, 3);
@@ -55,12 +60,30 @@ public class StoreManagement : MonoBehaviour
 
     void TryBuyItem(List<int> itemCost, StoreItem.ItemType itemType){
         List<int> x = new List<int>() {1,2,3,4,5};
-        Debug.Log(itemType);
-        Debug.Log(shopCustomer.TrySpendOreAmount(x));
-        if(shopCustomer.TrySpendOreAmount(x)){
-            // can afford cost
-            shopCustomer.BoughtItem(itemType);
+        // Debug.Log(itemType);
+        // Debug.Log(shopCustomer.TrySpendOreAmount(x));
+        // if(shopCustomer.TrySpendOreAmount(x)){
+        //     Debug.Log("In the if statement of TryBuyItem");
+        //     // can afford cost
+        //     shopCustomer.BoughtItem(itemType);
+        // }
+
+        Debug.Log(TrySpendOreAmount(itemCost));
+    }
+
+    public bool TrySpendOreAmount(List<int> oreAmountRequired)
+    {
+        Debug.Log(oreCount);
+
+        for(int i = 0; i < 5; i++){
+            if(oreAmountRequired[i] > oreCount[i]){
+                return false;
+            }else{
+                oreCount[i] -= oreAmountRequired[i];
+            }
         }
+
+        return true;
     }
 
     public void Hide(){
