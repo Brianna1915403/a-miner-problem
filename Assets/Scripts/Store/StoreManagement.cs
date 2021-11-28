@@ -58,7 +58,6 @@ public class StoreManagement : MonoBehaviour
 
     void TryBuyItem(List<int> itemCost, StoreItem.ItemType itemType){
         if(TrySpendOreAmount(itemCost)){
-            Debug.Log("In the if statement of TryBuyItem");
             // can afford cost
             BoughtItem(itemType);
         }
@@ -80,7 +79,49 @@ public class StoreManagement : MonoBehaviour
 
     public void BoughtItem(StoreItem.ItemType itemType)
     {
-        Debug.Log("Item bought = " + itemType);
+        switch(itemType){
+            default:
+            case StoreItem.ItemType.Pickaxe_1:
+            {
+                Debug.Log("Pickaxe_1 has been bought");
+                break;
+            }
+            case StoreItem.ItemType.Pickaxe_2:
+            {
+                Debug.Log("Pickaxe_2 has been bought");
+                break;
+            }
+            case StoreItem.ItemType.Pickaxe_3:
+            {
+                Debug.Log("Pickaxe_3 has been bought");
+                break;
+            }
+            case StoreItem.ItemType.Pickaxe_4:
+            {
+                Debug.Log("Pickaxe_4 has been bought");
+                break;
+            }
+            case StoreItem.ItemType.TrainPart_1:
+            {
+                Debug.Log("TrainPart_1 has been bought");
+                break;
+            }
+            case StoreItem.ItemType.TrainPart_2:
+            {
+                Debug.Log("Pickaxe_2 has been bought");
+                break;
+            }
+            case StoreItem.ItemType.TrainPart_3:
+            {
+                Debug.Log("Pickaxe_3 has been bought");
+                break;
+            }
+            case StoreItem.ItemType.TrainPart_4:
+            {
+                Debug.Log("TrainPart_4 has been bought");
+                break;
+            }
+        }
     }
 
     public void Hide(){
