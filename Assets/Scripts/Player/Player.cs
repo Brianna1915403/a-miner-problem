@@ -48,6 +48,6 @@ public class Player : MonoBehaviour
         } else {
             m_Fear = 0;
         }
-        Debug.Log($"Current Time: {m_CurrentTime}");
+        //Debug.Log($"Current Time: {m_CurrentTime}");
     }
 }

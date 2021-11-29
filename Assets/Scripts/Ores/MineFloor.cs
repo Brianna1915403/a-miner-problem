@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MineFloor : MonoBehaviour
 {
-    [SerializeField] private GameObject m_FloorPrefab;
-    [SerializeField] private MineFloor m_PreviousFloor;
+    [SerializeField] private OreSpawner[] m_OreSpawners;
     [Space]
     [SerializeField] private int m_FloorNumber = 1;
     [SerializeField] private int m_OreSpawnerAmount;
@@ -28,7 +27,7 @@ public class MineFloor : MonoBehaviour
     }
 
     private void Start() {
-        m_OreSpawnerAmount = transform.childCount > 0 ? transform.GetChild(transform.childCount - 1).childCount : 0;
+        m_OreSpawnerAmount = m_OreSpawners != null ? m_OreSpawners.Length : 0;
         //TODO: Remove
         GenerateOreDisribution();
         GeneratesOres();
@@ -64,8 +63,7 @@ public class MineFloor : MonoBehaviour
     /// </summary>
     private void GeneratesOres()
     {
-        OreSpawner[] oreSpawners = transform.transform.GetChild(transform.childCount - 1).GetComponentsInChildren<OreSpawner>();
-        foreach (var item in oreSpawners)
+        foreach (var item in m_OreSpawners)
         {
             item.SpawnOre();
         }
