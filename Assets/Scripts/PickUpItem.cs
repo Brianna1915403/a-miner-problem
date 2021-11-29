@@ -16,11 +16,18 @@ public class PickUpItem : MonoBehaviour
 
     DestinationManager destinationManager;
 
+    public ObjectsToScreen objectsToScreen;
+
+    GameObject cam;
+
+
     private void Start()
     {
         dest = GameObject.FindWithTag("Destination");
         destinationManager = dest.GetComponent<DestinationManager>();
         defaultMaterial = this.GetComponent<MeshRenderer>().material;
+        cam = GameObject.FindWithTag("MainCamera");
+        objectsToScreen = cam.GetComponent<ObjectsToScreen>();
     }
 
     void OnTriggerStay(Collider other)
@@ -29,11 +36,12 @@ public class PickUpItem : MonoBehaviour
         {
             if (GameObject.ReferenceEquals(this.gameObject, destinationManager.pickableItem))
             {
-                this.GetComponent<MeshRenderer>().material = canPickUpMaterial;
+                // this.GetComponent<MeshRenderer>().material = canPickUpMaterial;
+                objectsToScreen.setTarget(this.gameObject.transform);
             }
             else
             {
-                this.GetComponent<MeshRenderer>().material = defaultMaterial;
+                // this.GetComponent<MeshRenderer>().material = defaultMaterial;
             }
 
             if (Input.GetAxis("Interact") == 1)

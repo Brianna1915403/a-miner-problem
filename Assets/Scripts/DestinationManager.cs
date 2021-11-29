@@ -28,6 +28,11 @@ public class DestinationManager : MonoBehaviour
         pickableItem = FindClosestPickableOre();
     }
 
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Pickable"))
+            other.GetComponent<PickUpItem>().objectsToScreen.setTarget(null);
+    }
 
     public GameObject FindClosestPickableOre()
     {
