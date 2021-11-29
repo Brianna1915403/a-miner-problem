@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
     }
 
     void Start() {
+        PlayAudio source = new PlayAudio();
+        source.PlayBackgroundMusicSurface();
         m_CurrentTime = Time.deltaTime;
         m_TargetTime = m_CurrentTime + m_Delay;
     }
@@ -48,6 +50,6 @@ public class Player : MonoBehaviour
         } else {
             m_Fear = 0;
         }
-        Debug.Log($"Current Time: {m_CurrentTime}");
+        //Debug.Log($"Current Time: {m_CurrentTime}");
     }
 }

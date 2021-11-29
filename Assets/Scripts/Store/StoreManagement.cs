@@ -45,8 +45,6 @@ public class StoreManagement : MonoBehaviour
 
         text.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(itemName);
 
-        Debug.Log(itemCost[1]);
-
         for (int i = 1; i < text.childCount; i++){
             text.transform.GetChild(i).GetComponent<TextMeshProUGUI>().SetText(itemCost[i-1].ToString());
         }
