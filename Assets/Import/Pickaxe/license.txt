@@ -1,0 +1,11 @@
+Model Information:
+* title:	Pickaxe
+* source:	https://sketchfab.com/3d-models/pickaxe-be7bba0fca4c45de83d15a6c3e082f7b
+* author:	LeoPasc02 (https://sketchfab.com/LeoPasc02)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Pickaxe" (https://sketchfab.com/3d-models/pickaxe-be7bba0fca4c45de83d15a6c3e082f7b) by LeoPasc02 (https://sketchfab.com/LeoPasc02) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
