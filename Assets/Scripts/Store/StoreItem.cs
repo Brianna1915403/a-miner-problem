@@ -17,19 +17,23 @@ public class StoreItem
 
     }
 
-    public static int[] GetCost(ItemType itemType){
+    public static List<int> GetCost(ItemType itemType){
         switch(itemType){
             default:
-            case ItemType.Pickaxe_1:   return new int[]{1,2,3,4,5};
-            case ItemType.Pickaxe_2:   return new int[]{6,7,8,9,10};
-            case ItemType.Pickaxe_3:   return new int[]{11,12,13,14,15};
-            case ItemType.Pickaxe_4:   return new int[]{16,17,18,19,20};
-            case ItemType.TrainPart_1: return new int[]{1,2,3,4,5};
-            case ItemType.TrainPart_2: return new int[]{6,7,8,9,10};
-            case ItemType.TrainPart_3: return new int[]{11,12,13,14,15};
-            case ItemType.TrainPart_4: return new int[]{16,17,18,19,20};
-            case ItemType.Wagon:     return new int[]{500,550,555,600,700};
+            case ItemType.Pickaxe_1:   return CreateList(1,2,3,4,5);
+            case ItemType.Pickaxe_2:   return CreateList(1,2,3,4,5);
+            case ItemType.Pickaxe_3:   return CreateList(1,2,3,4,5);
+            case ItemType.Pickaxe_4:   return CreateList(1,2,3,4,5);
+            case ItemType.TrainPart_1: return CreateList(1,2,3,4,5);
+            case ItemType.TrainPart_2: return CreateList(1,2,3,4,5);
+            case ItemType.TrainPart_3: return CreateList(1,2,3,4,5);
+            case ItemType.TrainPart_4: return CreateList(1,2,3,4,5);
+            case ItemType.Wagon:       return CreateList(1,2,3,4,5);
         }
+    }
+
+    public static List<T> CreateList<T>(params T[] values){
+        return new List<T>(values);
     }
 
     // public static Sprite GetSprite(ItemType itemType){
