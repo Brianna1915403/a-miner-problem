@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum ORE_TYPE { SILVER, COPPER, GOLD, ELECTRUM, PLATINUM };
+public enum ORE_TYPE { CRYSTAL, SILVER, COPPER, GOLD, ELECTRUM, PLATINUM };
 public enum RARITY { COMMON, UNCOMMON, RARE, EPIC, LEGENDARY};
 
 public class OreAttributes : MonoBehaviour
@@ -70,6 +70,7 @@ public class OreAttributes : MonoBehaviour
     {
         return type switch
         {
+            ORE_TYPE.CRYSTAL => RARITY.COMMON,
             ORE_TYPE.SILVER => RARITY.COMMON,
             ORE_TYPE.COPPER => RARITY.UNCOMMON,
             ORE_TYPE.GOLD => RARITY.RARE,
@@ -83,6 +84,7 @@ public class OreAttributes : MonoBehaviour
     {
         return type switch
         {
+            ORE_TYPE.CRYSTAL => 1,
             ORE_TYPE.SILVER => 1,
             ORE_TYPE.COPPER => 2,
             ORE_TYPE.GOLD => 3,
@@ -96,6 +98,7 @@ public class OreAttributes : MonoBehaviour
     {
         return type switch
         {
+            ORE_TYPE.CRYSTAL => m_OreMaterials[5],
             ORE_TYPE.SILVER => m_OreMaterials[0],
             ORE_TYPE.COPPER => m_OreMaterials[1],
             ORE_TYPE.GOLD => m_OreMaterials[2],
