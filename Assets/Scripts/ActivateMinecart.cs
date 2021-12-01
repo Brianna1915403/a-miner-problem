@@ -40,6 +40,7 @@ public class ActivateMinecart : MonoBehaviour
                 {
                     pathFollower.speed = 0;
                     StartCoroutine(PickUpCooldown());
+                    audioSource.Play();
                 }
 
             }

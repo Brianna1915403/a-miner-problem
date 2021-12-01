@@ -11,6 +11,11 @@ public class ShopTriggerCollider : MonoBehaviour
     private bool StoreIsOpen = false;
 
     private AudioSource audioSource;
+
+    private void Start() {
+        audioSource = GetComponent<AudioSource>();
+    }
+    
     private void Update() {
         Collider[] colliders = Physics.OverlapSphere(transform.position, m_Radius);
         foreach(Collider collider in colliders){
