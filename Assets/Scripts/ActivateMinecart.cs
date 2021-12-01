@@ -11,8 +11,11 @@ public class ActivateMinecart : MonoBehaviour
     private bool isOnCooldown = false;
     private PathCreation.Examples.PathFollower pathFollower;
 
+    private AudioSource audioSource;
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         dest = GameObject.FindWithTag("Destination");
         pathFollower = this.GetComponent<PathCreation.Examples.PathFollower>();
         if (pathFollower.speed == 0)
@@ -29,6 +32,7 @@ public class ActivateMinecart : MonoBehaviour
                 {
                     pathFollower.speed = 2f;
                     StartCoroutine(PickUpCooldown());
+                    audioSource.Play();
 
                 }
                 // The objects are not the same
