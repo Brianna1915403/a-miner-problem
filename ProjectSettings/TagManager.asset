@@ -12,6 +12,7 @@ TagManager:
   - name
   - shopItemTemplate
   - Shop
+  - Train
   layers:
   - Default
   - TransparentFX
