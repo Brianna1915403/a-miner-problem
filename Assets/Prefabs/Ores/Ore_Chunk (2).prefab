@@ -14,10 +14,11 @@ GameObject:
   - component: {fileID: -9175551425923211368}
   - component: {fileID: -1416396479893558436}
   - component: {fileID: 7633270837277868856}
-  - component: {fileID: 8184059011330714713}
+  - component: {fileID: 758782340688894308}
+  - component: {fileID: -8630384076936470990}
   m_Layer: 0
   m_Name: Ore_Chunk (2)
-  m_TagString: Untagged
+  m_TagString: Ore Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +111,7 @@ MeshCollider:
   m_GameObject: {fileID: 5694805252851700893}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -128,19 +129,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_OreType: 0
---- !u!114 &8184059011330714713
+--- !u!114 &758782340688894308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5694805252851700893}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aea12ce32fa2744382e1a9f4bc317de, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a50c31f646207140b2a0fc75aea7657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateTorque: 1
-  hoverHeight: 0.75
-  hoverForce: 15
-  hoverDamp: 0.5
+  dest: {fileID: 0}
+  isPicked: 0
+  canPickUpMaterial: {fileID: 0}
+--- !u!65 &-8630384076936470990
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5694805252851700893}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.45802307, y: 0.21162033, z: 0.23916249}
+  m_Center: {x: 0, y: 0, z: 0}

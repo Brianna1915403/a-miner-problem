@@ -28,9 +28,10 @@ public class MineFloor : MonoBehaviour
 
     private void Start() {
         m_OreSpawnerAmount = m_OreSpawners != null ? m_OreSpawners.Length : 0;
-        //TODO: Remove
+        //TODO: Remove        
+        PrintDistribution();
         GenerateOreDisribution();
-        GeneratesOres();
+        //GeneratesOres();
     }
 
     /// <summary>
@@ -38,10 +39,14 @@ public class MineFloor : MonoBehaviour
     /// </summary>
     private void GenerateOreDisribution()
     {
+        // Clear the previous distrubution in case
+        m_OreDistribution.Clear();
         // Depending on the rarity of the ore a random rate, within it's respective ratio will be chosen at random.
         // It reduces it from the remainder and adds the value directly to the dictionary.
-        foreach(ORE_TYPE ore in Enum.GetValues(typeof(ORE_TYPE)))
+        foreach (ORE_TYPE ore in Enum.GetValues(typeof(ORE_TYPE)))
         {
+            if (ore == ORE_TYPE.CRYSTAL)
+                continue;
             float ratio = RarityRatio(OreAttributes.OreTypeToRarity(ore));
             m_Remainder -= ratio;
             m_OreDistribution.Add(ore, m_OreSpawnerAmount * ratio);

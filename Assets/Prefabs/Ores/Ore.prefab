@@ -65,6 +65,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: a70524ba99040474e983a1964ee40a1c, type: 2}
   - {fileID: 2100000, guid: 955d38f95f2d02a48b2053a573d40c9d, type: 2}
   - {fileID: 2100000, guid: f48044801beb4a941836f881afb1e548, type: 2}
+  - {fileID: 2100000, guid: f0ff6aa941b751744976dda896a955ca, type: 2}
 --- !u!135 &2307954144178734958
 SphereCollider:
   m_ObjectHideFlags: 0
