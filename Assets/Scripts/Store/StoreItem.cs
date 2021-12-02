@@ -13,6 +13,10 @@ public class StoreItem
         TrainPart_2,
         TrainPart_3,
         TrainPart_4,
+        TrainPart_5,
+        TrainPart_6,
+        TrainPart_7,
+        TrainPart_8,
         Wagon,
 
     }
@@ -28,6 +32,10 @@ public class StoreItem
             case ItemType.TrainPart_2: return CreateList(1,2,3,4,5);
             case ItemType.TrainPart_3: return CreateList(1,2,3,4,5);
             case ItemType.TrainPart_4: return CreateList(1,2,3,4,5);
+            case ItemType.TrainPart_5: return CreateList(1, 2, 3, 4, 5);
+            case ItemType.TrainPart_6: return CreateList(1, 2, 3, 4, 5);
+            case ItemType.TrainPart_7: return CreateList(1, 2, 3, 4, 5);
+            case ItemType.TrainPart_8: return CreateList(1, 2, 3, 4, 5);
             case ItemType.Wagon:       return CreateList(1,2,3,4,5);
         }
     }
