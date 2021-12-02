@@ -46,7 +46,7 @@ public class StoreOres : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
+        //sDontDestroyOnLoad(this.gameObject);
 
     }
 

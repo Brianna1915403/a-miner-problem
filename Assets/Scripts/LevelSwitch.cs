@@ -18,5 +18,4 @@ public class LevelSwitch : MonoBehaviour
             Player.Instance.InMine = scene > m_OverworldScene;
         }
     }
-
 }
