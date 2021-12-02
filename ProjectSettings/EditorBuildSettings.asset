@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Floors/BonusFloor.unity
     guid: 5c2937d5e51cfb24f88cbd9397070bbd
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: 5e08588fd90068847bcd6749b0dfb94a
   m_configObjects: {}
