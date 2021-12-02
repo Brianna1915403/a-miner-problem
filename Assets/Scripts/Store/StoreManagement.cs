@@ -46,10 +46,10 @@ public class StoreManagement : MonoBehaviour
         CreateItemButton(StoreItem.ItemType.TrainPart_2, "Wheel Support", StoreItem.GetCost(StoreItem.ItemType.TrainPart_2), -485, 4);
         CreateItemButton(StoreItem.ItemType.TrainPart_3, "Connecting Rods", StoreItem.GetCost(StoreItem.ItemType.TrainPart_3), -485, 5);
         CreateItemButton(StoreItem.ItemType.TrainPart_4, "Engine Car", StoreItem.GetCost(StoreItem.ItemType.TrainPart_4), -485, 6);
-        CreateItemButton(StoreItem.ItemType.TrainPart_5, "Roof", StoreItem.GetCost(StoreItem.ItemType.TrainPart_5), -485, 3);
-        CreateItemButton(StoreItem.ItemType.TrainPart_6, "Chimney", StoreItem.GetCost(StoreItem.ItemType.TrainPart_6), -485, 4);
-        CreateItemButton(StoreItem.ItemType.TrainPart_7, "Screws", StoreItem.GetCost(StoreItem.ItemType.TrainPart_7), -485, 5);
-        CreateItemButton(StoreItem.ItemType.TrainPart_8, "Tracks", StoreItem.GetCost(StoreItem.ItemType.TrainPart_8), -485, 6);
+        CreateItemButton(StoreItem.ItemType.TrainPart_5, "Roof", StoreItem.GetCost(StoreItem.ItemType.TrainPart_5), -485, 7);
+        CreateItemButton(StoreItem.ItemType.TrainPart_6, "Chimney", StoreItem.GetCost(StoreItem.ItemType.TrainPart_6), -485, 8);
+        CreateItemButton(StoreItem.ItemType.TrainPart_7, "Screws", StoreItem.GetCost(StoreItem.ItemType.TrainPart_7), -485, 9);
+        CreateItemButton(StoreItem.ItemType.TrainPart_8, "Tracks", StoreItem.GetCost(StoreItem.ItemType.TrainPart_8), -485, 10);
         //CreateItemButton(StoreItem.ItemType.Wagon, "Wagon", StoreItem.GetCost(StoreItem.ItemType.Wagon), -485, 7);
 
         Hide();
@@ -132,8 +132,8 @@ public class StoreManagement : MonoBehaviour
             case StoreItem.ItemType.TrainPart_2:
             {
                 train.activate(wheelsupport);
-                train.deactivate(wheelsupport);
-                Debug.Log("Pickaxe_2 has been bought");
+                train.deactivate(blueprint_wheelsupport);
+                Debug.Log("wheelsupport has been bought");
                 break;
             }
             case StoreItem.ItemType.TrainPart_3:
