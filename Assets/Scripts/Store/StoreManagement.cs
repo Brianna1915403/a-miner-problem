@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Threading;
 
 public class StoreManagement : MonoBehaviour
 {
+    public GameObject tooltip;
+    private float cooldownStart = 0f;
+    private float cooldown = 2f;
     private RectTransform container;
     [SerializeField] private GameObject shopItemTemplate;
     private List<string> oreName;
@@ -33,29 +37,40 @@ public class StoreManagement : MonoBehaviour
         shopItemTemplate = GameObject.FindGameObjectWithTag("shopItemTemplate");
         shopItemTemplate.gameObject.SetActive(true);
 
+
         oreName = StoreOres.Instance.OreName;
         oreCount = StoreOres.Instance.OreCount;
     }
 
     private void Start() {
-        CreateItemButton(StoreItem.ItemType.Pickaxe_1, "Pickaxe_1", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_1), 0, 3);
-        CreateItemButton(StoreItem.ItemType.Pickaxe_2, "Pickaxe_2", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_2), 0, 4);
-        CreateItemButton(StoreItem.ItemType.Pickaxe_3, "Pickaxe_3", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_3), 0, 5);
-        CreateItemButton(StoreItem.ItemType.Pickaxe_4, "Pickaxe_4", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_4), 0, 6);
-        CreateItemButton(StoreItem.ItemType.TrainPart_1, "Wheels", StoreItem.GetCost(StoreItem.ItemType.TrainPart_1), -485, 3);
-        CreateItemButton(StoreItem.ItemType.TrainPart_2, "Wheel Support", StoreItem.GetCost(StoreItem.ItemType.TrainPart_2), -485, 4);
-        CreateItemButton(StoreItem.ItemType.TrainPart_3, "Connecting Rods", StoreItem.GetCost(StoreItem.ItemType.TrainPart_3), -485, 5);
-        CreateItemButton(StoreItem.ItemType.TrainPart_4, "Engine Car", StoreItem.GetCost(StoreItem.ItemType.TrainPart_4), -485, 6);
-        CreateItemButton(StoreItem.ItemType.TrainPart_5, "Roof", StoreItem.GetCost(StoreItem.ItemType.TrainPart_5), -485, 7);
-        CreateItemButton(StoreItem.ItemType.TrainPart_6, "Chimney", StoreItem.GetCost(StoreItem.ItemType.TrainPart_6), -485, 8);
-        CreateItemButton(StoreItem.ItemType.TrainPart_7, "Screws", StoreItem.GetCost(StoreItem.ItemType.TrainPart_7), -485, 9);
-        CreateItemButton(StoreItem.ItemType.TrainPart_8, "Tracks", StoreItem.GetCost(StoreItem.ItemType.TrainPart_8), -485, 10);
+        CreateItemButton(StoreItem.ItemType.Pickaxe_1, "Pickaxe_1", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_1), 0, 1);
+        CreateItemButton(StoreItem.ItemType.Pickaxe_2, "Pickaxe_2", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_2), 0, 2);
+        CreateItemButton(StoreItem.ItemType.Pickaxe_3, "Pickaxe_3", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_3), 0, 3);
+        CreateItemButton(StoreItem.ItemType.Pickaxe_4, "Pickaxe_4", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_4), 0, 4);
+        CreateItemButton(StoreItem.ItemType.TrainPart_1, "Wheels", StoreItem.GetCost(StoreItem.ItemType.TrainPart_1), -485, 0);
+        CreateItemButton(StoreItem.ItemType.TrainPart_2, "Wheel Support", StoreItem.GetCost(StoreItem.ItemType.TrainPart_2), -485, 1);
+        CreateItemButton(StoreItem.ItemType.TrainPart_3, "Connecting Rods", StoreItem.GetCost(StoreItem.ItemType.TrainPart_3), -485, 2);
+        CreateItemButton(StoreItem.ItemType.TrainPart_4, "Engine Car", StoreItem.GetCost(StoreItem.ItemType.TrainPart_4), -485, 3);
+        CreateItemButton(StoreItem.ItemType.TrainPart_5, "Roof", StoreItem.GetCost(StoreItem.ItemType.TrainPart_5), -485, 4);
+        CreateItemButton(StoreItem.ItemType.TrainPart_6, "Chimney", StoreItem.GetCost(StoreItem.ItemType.TrainPart_6), -485, 5);
+        CreateItemButton(StoreItem.ItemType.TrainPart_7, "Screws", StoreItem.GetCost(StoreItem.ItemType.TrainPart_7), -485, 6);
+        CreateItemButton(StoreItem.ItemType.TrainPart_8, "Tracks", StoreItem.GetCost(StoreItem.ItemType.TrainPart_8), -485, 7);
         //CreateItemButton(StoreItem.ItemType.Wagon, "Wagon", StoreItem.GetCost(StoreItem.ItemType.Wagon), -485, 7);
 
+        tooltip.SetActive(false);
         Hide();
     }
 
+    private void Update() {
+        Debug.Log(Time.time);
+        if (Time.time >= cooldownStart){
+            tooltip.SetActive(false);
+            cooldownStart = Time.time;
+        }
+    }
+
     private void CreateItemButton(StoreItem.ItemType itemType, string itemName, List<int> itemCost, int xPositionIndex, int yPositionIndex){
+
         GameObject shopItemTransform = Instantiate(shopItemTemplate, container);
         RectTransform shopItemRectTransform = shopItemTransform.GetComponent<RectTransform>();
 
@@ -88,6 +103,9 @@ public class StoreManagement : MonoBehaviour
     {
         for(int i = 0; i < 5; i++){
             if(oreAmountRequired[i] > oreCount[i]){ 
+                tooltip.SetActive(true);
+                cooldownStart = Time.time + cooldown;
+                Debug.Log(Time.time);
                 return false; 
             }
         }
@@ -96,6 +114,11 @@ public class StoreManagement : MonoBehaviour
         }
 
         return true;
+    }
+
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 
     public void BoughtItem(StoreItem.ItemType itemType)
