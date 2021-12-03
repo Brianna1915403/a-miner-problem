@@ -6,7 +6,7 @@ public class Lantern : MonoBehaviour
 {
     [SerializeField] private LightBox m_LightBox;
     [SerializeField] private float m_FearReducer;
-    [SerializeField] private bool m_CanAcivate = false;
+    [SerializeField] private bool m_CanActivate = false;
     [SerializeField] private float m_Delay = 2f;
     [SerializeField] private float m_TargetTime = 0f;
     [SerializeField] private float m_CurrentTime = 0f;
@@ -23,6 +23,7 @@ public class Lantern : MonoBehaviour
         {
             if (collider.gameObject.CompareTag("Player"))
             {
+                Debug.Log("Player within distance.");
                 if (m_LightBox.IsOn) {
                     m_CurrentTime += Time.deltaTime;
                     if (m_CurrentTime >= m_TargetTime) {
@@ -32,22 +33,41 @@ public class Lantern : MonoBehaviour
                         float reduction = m_FearReducer / distance;
                         Player.Instance.Fear -= Player.Instance.Fear <= 0 ? 0 : reduction;
                         Debug.Log($"Reduction: {reduction}");
-                        Debug.Log("Orphans in my basement!!!!!");
                     }
                 } else {
-                    m_CanAcivate = true;
+                    m_CanActivate = true;
                 }
+                break;
             } else {
-                m_CanAcivate = false;       
+                m_CanActivate = false;       
             }                   
         }  
     }
 
-    void OnMouseOver() {
-        if (!m_LightBox.IsOn && m_CanAcivate && Input.GetKeyDown(KeyCode.E)) {
-            m_LightBox.TurnOn();
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log($"Trigger Collider w/ {other.name}");
+        if (other.CompareTag("Ore Chunk"))
+        {
+            OreChunk attributes = other.GetComponent<OreChunk>();
+            Debug.Log($"Can activate? {m_CanActivate}");
+            if (m_CanActivate && attributes.OreType.Equals(ORE_TYPE.CRYSTAL))
+            {
+                m_LightBox.TurnOn();
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                Debug.Log($"{attributes.OreType} {(attributes.OreType.Equals(ORE_TYPE.CRYSTAL) ? "is" : "is not")} a crystal");
+            }
         }
     }
+
+    //void OnMouseOver() {
+    //    if (!m_LightBox.IsOn && m_CanActivate) {
+    //        m_LightBox.TurnOn();
+    //    }
+    //}
 
     private void OnDrawGizmos()
     {

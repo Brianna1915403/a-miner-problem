@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Destination
   - Ore
-  - Mining Box
   - Pickable
   - Activatable
   - name
@@ -22,6 +21,7 @@ TagManager:
   - ConnectingRods
   - Wheels
   - Path
+  - Ore Chunk
   layers:
   - Default
   - TransparentFX

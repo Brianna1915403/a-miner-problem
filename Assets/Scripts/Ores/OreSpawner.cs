@@ -5,7 +5,7 @@ using UnityEngine;
 public class OreSpawner : MonoBehaviour 
 {
     [SerializeField] private MineFloor m_MineFloor;
-    [SerializeField] private GameObject[] m_OrePrefabs;
+    [SerializeField] private GameObject m_OrePrefab;
     [SerializeField] private float m_Radius = 1f;
         
     // Start is called before the first frame update
@@ -63,9 +63,9 @@ public class OreSpawner : MonoBehaviour
 
         Debug.Log($"Choice: {choice} | Ore: {ore}");
 
-        GameObject oreObj = Instantiate(m_OrePrefabs[ore], GetOreSpawnPosition(), transform.rotation);
+        GameObject oreObj = Instantiate(m_OrePrefab, GetOreSpawnPosition(), transform.rotation);
         oreObj.transform.parent = transform.parent;
-        Destroy(gameObject);
+        oreObj.GetComponent<OreAttributes>().UpdateOre((ORE_TYPE)ore);
     }
 
     /// <summary>
@@ -108,7 +108,6 @@ public class OreSpawner : MonoBehaviour
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, m_Radius);
     }
-
 
     private void PrintArray(float[] arr)
     {

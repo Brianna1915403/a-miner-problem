@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3791870677154941963}
   - component: {fileID: 3791870677156942536}
   - component: {fileID: 6622999361277978866}
+  - component: {fileID: 7576242763656736442}
   m_Layer: 3
   m_Name: Lantern
   m_TagString: Untagged
@@ -93,7 +94,7 @@ MeshCollider:
   m_GameObject: {fileID: 3791870677156942539}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -112,7 +113,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightBox: {fileID: 6284012404742626305}
   m_FearReducer: 2
-  m_CanAcivate: 0
+  m_CanActivate: 0
+  m_Delay: 2
+  m_TargetTime: 0
+  m_CurrentTime: 0
+--- !u!65 &7576242763656736442
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3791870677156942539}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22545967, y: 0.588526, z: 0.22546014}
+  m_Center: {x: 0.00027396902, y: 0.14164591, z: -0.00024412945}
 --- !u!1 &6388524789426602562
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +144,7 @@ GameObject:
   - component: {fileID: 7626932774500962133}
   - component: {fileID: 6284012404742626305}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Lightbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

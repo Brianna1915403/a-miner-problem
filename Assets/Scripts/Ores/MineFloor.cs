@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MineFloor : MonoBehaviour
 {
-    [SerializeField] private GameObject m_FloorPrefab;
-    [SerializeField] private MineFloor m_PreviousFloor;
+    [SerializeField] private OreSpawner[] m_OreSpawners;
     [Space]
     [SerializeField] private int m_FloorNumber = 1;
     [SerializeField] private int m_OreSpawnerAmount;
@@ -28,8 +27,9 @@ public class MineFloor : MonoBehaviour
     }
 
     private void Start() {
-        m_OreSpawnerAmount = transform.childCount > 0 ? transform.GetChild(transform.childCount - 1).childCount : 0;
-        //TODO: Remove
+        m_OreSpawnerAmount = m_OreSpawners != null ? m_OreSpawners.Length : 0;
+        //TODO: Remove        
+        PrintDistribution();
         GenerateOreDisribution();
         GeneratesOres();
     }
@@ -39,10 +39,14 @@ public class MineFloor : MonoBehaviour
     /// </summary>
     private void GenerateOreDisribution()
     {
+        // Clear the previous distrubution in case
+        m_OreDistribution.Clear();
         // Depending on the rarity of the ore a random rate, within it's respective ratio will be chosen at random.
         // It reduces it from the remainder and adds the value directly to the dictionary.
-        foreach(ORE_TYPE ore in Enum.GetValues(typeof(ORE_TYPE)))
+        foreach (ORE_TYPE ore in Enum.GetValues(typeof(ORE_TYPE)))
         {
+            if (ore == ORE_TYPE.CRYSTAL)
+                continue;
             float ratio = RarityRatio(OreAttributes.OreTypeToRarity(ore));
             m_Remainder -= ratio;
             m_OreDistribution.Add(ore, m_OreSpawnerAmount * ratio);
@@ -64,8 +68,7 @@ public class MineFloor : MonoBehaviour
     /// </summary>
     private void GeneratesOres()
     {
-        OreSpawner[] oreSpawners = transform.transform.GetChild(transform.childCount - 1).GetComponentsInChildren<OreSpawner>();
-        foreach (var item in oreSpawners)
+        foreach (var item in m_OreSpawners)
         {
             item.SpawnOre();
         }
