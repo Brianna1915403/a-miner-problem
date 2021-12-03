@@ -1,0 +1,7 @@
+newmtl DesertRock512_Displacement
+map_Kd Desert Rock_512_Albedo.tga
+bump Desert Rock_512_Normal.tga
+disp Desert Rock_512_Displacement.tga
+Kd 1 0.7245983 0.2122642
+d 1
+

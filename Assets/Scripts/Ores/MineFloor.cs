@@ -31,7 +31,7 @@ public class MineFloor : MonoBehaviour
         //TODO: Remove        
         PrintDistribution();
         GenerateOreDisribution();
-        //GeneratesOres();
+        GeneratesOres();
     }
 
     /// <summary>
