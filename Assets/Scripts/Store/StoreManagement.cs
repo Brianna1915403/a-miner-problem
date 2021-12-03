@@ -14,29 +14,13 @@ public class StoreManagement : MonoBehaviour
     [SerializeField] private GameObject shopItemTemplate;
     private List<string> oreName;
     private List<int> oreCount;
-    public ActivateTrainPart train;
-    public GameObject roof;
-    public GameObject wheels;
-    public GameObject engineCar;
-    public GameObject connectingRods;
-    public GameObject wheelsupport;
-    public GameObject chimney;
-    public GameObject tracks;
-    public GameObject screws;
-    public GameObject blueprint_roof;
-    public GameObject blueprint_wheels;
-    public GameObject blueprint_engineCar;
-    public GameObject blueprint_connectingRods;
-    public GameObject blueprint_wheelsupport;
-    public GameObject blueprint_chimney;
-    public GameObject blueprint_tracks;
-    public GameObject blueprint_screws;
+    private ActivateTrainPart train;
 
     private void Awake(){
         container = transform.Find("Container").gameObject.GetComponent<RectTransform>();
         shopItemTemplate = GameObject.FindGameObjectWithTag("shopItemTemplate");
         shopItemTemplate.gameObject.SetActive(true);
-
+        train = FindObjectOfType<ActivateTrainPart>();
 
         oreName = StoreOres.Instance.OreName;
         oreCount = StoreOres.Instance.OreCount;
@@ -64,7 +48,7 @@ public class StoreManagement : MonoBehaviour
     private void Update() {
         Debug.Log(Time.time);
         if (Time.time >= cooldownStart){
-            tooltip.SetActive(false);
+            tooltip.SetActive(false);   
             cooldownStart = Time.time;
         }
     }
@@ -147,57 +131,57 @@ public class StoreManagement : MonoBehaviour
             }
             case StoreItem.ItemType.TrainPart_1:
             {
-                train.activate(wheels);
-                train.deactivate(blueprint_wheels);
+                train.activate(train.wheels); 
+                train.deactivate(train.blueprint_wheels);
                 Debug.Log("TrainPart_1 has been bought");
                 break;
             }
             case StoreItem.ItemType.TrainPart_2:
             {
-                train.activate(wheelsupport);
-                train.deactivate(blueprint_wheelsupport);
+                train.activate(train.wheelsupport);
+                train.deactivate(train.blueprint_wheelsupport);
                 Debug.Log("wheelsupport has been bought");
                 break;
             }
             case StoreItem.ItemType.TrainPart_3:
             {
-                train.activate(connectingRods);
-                train.deactivate(blueprint_connectingRods);
+                train.activate(train.connectingRods);
+                train.deactivate(train.blueprint_connectingRods);
                 Debug.Log("Pickaxe_3 has been bought");
                 break;
             }
             case StoreItem.ItemType.TrainPart_4:
             {
-                train.activate(engineCar);
-                train.deactivate(blueprint_engineCar);
+                train.activate(train.engineCar);
+                train.deactivate(train.blueprint_engineCar);
                 Debug.Log("TrainPart_4 has been bought");
                 break;
             }
             case StoreItem.ItemType.TrainPart_5:
             {
-                train.activate(roof);
-                train.deactivate(blueprint_roof);
+                train.activate(train.roof);
+                train.deactivate(train.blueprint_roof);
                 Debug.Log("TrainPart_5 has been bought");
                 break;
             }
             case StoreItem.ItemType.TrainPart_6:
             {
-                train.activate(chimney);
-                train.deactivate(blueprint_chimney);
+                train.activate(train.chimney);
+                train.deactivate(train.blueprint_chimney);
                 Debug.Log("TrainPart_6 has been bought");
                 break;
             }
             case StoreItem.ItemType.TrainPart_7:
             {
-                train.activate(screws);
-                train.deactivate(blueprint_screws);
+                train.activate(train.screws);
+                train.deactivate(train.blueprint_screws);
                 Debug.Log("TrainPart_7 has been bought");
                 break;
             }
             case StoreItem.ItemType.TrainPart_8:
             {
-                train.activate(tracks);
-                train.deactivate(blueprint_tracks);
+                train.activate(train.tracks);
+                train.deactivate(train.blueprint_tracks);
                 Debug.Log("TrainPart_8 has been bought");
                 break;
             }

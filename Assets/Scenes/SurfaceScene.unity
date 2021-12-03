@@ -1840,15 +1840,15 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190335
-  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 0.9622642, g: 0, b: 0, a: 1}
-    topRight: {r: 0, g: 0, b: 0, a: 1}
-    bottomLeft: {r: 0, g: 0, b: 0, a: 1}
-    bottomRight: {r: 1, g: 0, b: 0, a: 1}
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 0, b: 0, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -2290,6 +2290,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShopPanel: {fileID: 291070171}
   m_Radius: 20
+--- !u!114 &227641808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227641806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53077ca6ac46e3942846a885a269e19d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &229678131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4168,6 +4180,7 @@ GameObject:
   - component: {fileID: 452138414}
   - component: {fileID: 452138413}
   - component: {fileID: 452138412}
+  - component: {fileID: 452138416}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4256,6 +4269,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &452138416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452138411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8103ebd498e936419fcc1c7d4a69934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectID: 
 --- !u!1001 &456920785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8907,6 +8933,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106338195}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1123516708 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8126037557631722619, guid: 317bc1a494ef6dc4595e1833d3af7a85, type: 3}
+  m_PrefabInstance: {fileID: 1888408404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1124175706
 GameObject:
   m_ObjectHideFlags: 0
@@ -11643,6 +11674,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1629726329}
+  - component: {fileID: 1629726330}
   m_Layer: 0
   m_Name: TrainBlueprint
   m_TagString: Untagged
@@ -11665,6 +11697,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1629726330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629726328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8103ebd498e936419fcc1c7d4a69934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectID: 
 --- !u!1 &1633616765
 GameObject:
   m_ObjectHideFlags: 0
@@ -13338,7 +13383,7 @@ GameObject:
   - component: {fileID: 1793927728}
   m_Layer: 0
   m_Name: TrainTracks
-  m_TagString: Untagged
+  m_TagString: TrainTracks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14202,6 +14247,10 @@ PrefabInstance:
       propertyPath: chimney
       value: 
       objectReference: {fileID: 3323726048634601845}
+    - target: {fileID: 2221623459350098112, guid: 317bc1a494ef6dc4595e1833d3af7a85, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 1123516708}
     - target: {fileID: 2221623459350098112, guid: 317bc1a494ef6dc4595e1833d3af7a85, type: 3}
       propertyPath: engineCar
       value: 
@@ -16401,7 +16450,7 @@ GameObject:
   - component: {fileID: 6721470539929764283}
   m_Layer: 0
   m_Name: WheelSupport
-  m_TagString: Untagged
+  m_TagString: WheelSupport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16589,7 +16638,7 @@ GameObject:
   - component: {fileID: 3581473388150788162}
   m_Layer: 0
   m_Name: Screws
-  m_TagString: Untagged
+  m_TagString: Screws
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18487,7 +18536,7 @@ GameObject:
   - component: {fileID: 4792241791644373229}
   m_Layer: 0
   m_Name: Chimney
-  m_TagString: Untagged
+  m_TagString: Chimney
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19209,8 +19258,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 486429888457187826}
-  - component: {fileID: 5165216328976119982}
   - component: {fileID: 5165216328976119983}
+  - component: {fileID: 5165216328976119982}
+  - component: {fileID: 5165216328976119984}
   m_Layer: 0
   m_Name: Train
   m_TagString: Untagged
@@ -19236,8 +19286,16 @@ MonoBehaviour:
   connectingRods: {fileID: 7941884163559827431}
   wheelsupport: {fileID: 383796105643232814}
   chimney: {fileID: 3323726048634601845}
-  tracks: {fileID: 1926710390732776544}
+  tracks: {fileID: 1793927727}
   screws: {fileID: 864465370678747377}
+  blueprint_roof: {fileID: 1081449540}
+  blueprint_wheels: {fileID: 972003640}
+  blueprint_engineCar: {fileID: 369172624}
+  blueprint_connectingRods: {fileID: 1564977209}
+  blueprint_wheelsupport: {fileID: 1145752689}
+  blueprint_chimney: {fileID: 1373326009}
+  blueprint_tracks: {fileID: 290475352}
+  blueprint_screws: {fileID: 1587871583}
   ui: {fileID: 192335734}
 --- !u!65 &5165216328976119983
 BoxCollider:
@@ -19252,6 +19310,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5165216328976119984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5165216328976119981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8103ebd498e936419fcc1c7d4a69934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectID: 
 --- !u!1 &5179097120365784399
 GameObject:
   m_ObjectHideFlags: 0
@@ -19863,7 +19934,7 @@ GameObject:
   - component: {fileID: 6073895051879782349}
   m_Layer: 0
   m_Name: Roof
-  m_TagString: Untagged
+  m_TagString: Roof
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20416,7 +20487,7 @@ GameObject:
   - component: {fileID: 5559367871510718566}
   m_Layer: 0
   m_Name: EngineCar
-  m_TagString: Untagged
+  m_TagString: EngineCar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20554,7 +20625,7 @@ GameObject:
   - component: {fileID: 2177093058800766261}
   m_Layer: 0
   m_Name: ConnectingRods
-  m_TagString: Untagged
+  m_TagString: ConnectingRods
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21004,7 +21075,7 @@ GameObject:
   - component: {fileID: 337020818775375818}
   m_Layer: 0
   m_Name: Wheels
-  m_TagString: Untagged
+  m_TagString: Wheels
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

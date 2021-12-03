@@ -13,6 +13,14 @@ public class ActivateTrainPart : MonoBehaviour
     public GameObject chimney;
     public GameObject tracks;
     public GameObject screws;
+    public GameObject blueprint_roof;
+    public GameObject blueprint_wheels;
+    public GameObject blueprint_engineCar;
+    public GameObject blueprint_connectingRods;
+    public GameObject blueprint_wheelsupport;
+    public GameObject blueprint_chimney;
+    public GameObject blueprint_tracks;
+    public GameObject blueprint_screws;
     public GameObject ui;
     public void activate(GameObject trainPart)
     {

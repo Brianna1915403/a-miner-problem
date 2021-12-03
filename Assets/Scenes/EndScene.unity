@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1667074, g: 0.14113182, b: 0.10660831, a: 1}
+  m_IndirectSpecularColor: {r: 0.44851083, g: 0.498555, b: 0.57565004, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1044,6 +1044,7 @@ MonoBehaviour:
   dest: {fileID: 0}
   isPicked: 0
   canPickUpMaterial: {fileID: 0}
+  objectsToScreen: {fileID: 0}
 --- !u!65 &128688180
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31516,13 +31517,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180238379562114542}
-  m_LocalRotation: {x: 0, y: 0, z: -0, w: -1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalRotation: {x: 0.039412033, y: -0.7289539, z: 0.058399457, w: -0.6809277}
+  m_LocalPosition: {x: 0.06, y: 0.231, z: 0.042}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4750626170654569160}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.803, y: 93.778, z: -7.878}
 --- !u!4 &1151238927801548536
 Transform:
   m_ObjectHideFlags: 0
