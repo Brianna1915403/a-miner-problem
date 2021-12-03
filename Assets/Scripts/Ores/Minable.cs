@@ -5,13 +5,16 @@ using UnityEngine;
 public class Minable : MonoBehaviour
 {
     private OreAttributes m_OreAttributes;
+    private AudioSource audioSource;
 
     void Start()
     {
         m_OreAttributes = GetComponent<OreAttributes>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnMouseDown() {
+        audioSource.Play();
         Mine();
     }
 

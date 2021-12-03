@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: e22130073b0327c469cb8c8331ff78c0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - backgroundMusicSurface: {fileID: 8300000, guid: bc25e2a6f3ee4c048b708ea853082cc9, type: 3}
+  - backgroundMusicMine: {instanceID: 0}
+  - walking: {instanceID: 0}
+  - voiceMine: {instanceID: 0}
+  - pickaxeMine: {instanceID: 0}
+  - fear: {instanceID: 0}
+  - minecart: {instanceID: 0}
+  - storeInteraction: {instanceID: 0}
+  - crystalChime: {instanceID: 0}
+  - oreDamage: {instanceID: 0}
+  - m_backgroundMusicSurface: {instanceID: 0}
+  - m_backgroundMusicMine: {instanceID: 0}
+  - m_walking: {instanceID: 0}
+  - m_voiceMine: {instanceID: 0}
+  - m_pickaxeMine: {instanceID: 0}
+  - m_fear: {instanceID: 0}
+  - m_minecart: {instanceID: 0}
+  - m_storeInteraction: {instanceID: 0}
+  - m_crystalChime: {instanceID: 0}
+  - m_oreDamage: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

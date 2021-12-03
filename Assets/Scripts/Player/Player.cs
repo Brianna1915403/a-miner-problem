@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
     }
 
     void Start() {
+        PlayAudio source = new PlayAudio();
+        source.PlayBackgroundMusicSurface();
         m_CurrentTime = Time.deltaTime;
         m_TargetTime = m_CurrentTime + m_Delay;
     }

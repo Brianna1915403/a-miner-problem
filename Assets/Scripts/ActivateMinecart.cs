@@ -13,8 +13,11 @@ public class ActivateMinecart : MonoBehaviour
     public ObjectsToScreen objectsToScreen;
     GameObject cam;
 
+    private AudioSource audioSource;
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         dest = GameObject.FindWithTag("Destination");
         pathFollower = this.GetComponent<PathCreation.Examples.PathFollower>();
         cam = GameObject.FindWithTag("MainCamera");
@@ -34,6 +37,7 @@ public class ActivateMinecart : MonoBehaviour
                 {
                     pathFollower.speed = 2f;
                     StartCoroutine(PickUpCooldown());
+                    audioSource.Play();
 
                 }
                 // The objects are not the same
@@ -41,6 +45,7 @@ public class ActivateMinecart : MonoBehaviour
                 {
                     pathFollower.speed = 0;
                     StartCoroutine(PickUpCooldown());
+                    audioSource.Play();
                 }
 
             }
