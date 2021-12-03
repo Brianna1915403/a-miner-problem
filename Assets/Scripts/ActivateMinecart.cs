@@ -10,11 +10,15 @@ public class ActivateMinecart : MonoBehaviour
     private float activateCooldown = 0.5f;
     private bool isOnCooldown = false;
     private PathCreation.Examples.PathFollower pathFollower;
+    public ObjectsToScreen objectsToScreen;
+    GameObject cam;
 
     private void Start()
     {
         dest = GameObject.FindWithTag("Destination");
         pathFollower = this.GetComponent<PathCreation.Examples.PathFollower>();
+        cam = GameObject.FindWithTag("MainCamera");
+        objectsToScreen = cam.GetComponent<ObjectsToScreen>();
         if (pathFollower.speed == 0)
             isActivated = false;
     }
@@ -23,6 +27,7 @@ public class ActivateMinecart : MonoBehaviour
         isActivated = pathFollower.speed != 0 ? true : false;
         if (other.gameObject.CompareTag("Destination"))
         {
+            objectsToScreen.setTarget2(this.gameObject.transform);
             if (Input.GetAxis("Activation") == 1)
             {
                 if (isOnCooldown == false && isActivated == false)

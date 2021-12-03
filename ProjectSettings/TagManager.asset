@@ -21,6 +21,7 @@ TagManager:
   - EngineCar
   - ConnectingRods
   - Wheels
+  - Path
   layers:
   - Default
   - TransparentFX
