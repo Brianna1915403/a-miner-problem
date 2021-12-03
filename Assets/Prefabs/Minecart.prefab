@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5097805129291612134}
   m_Layer: 0
   m_Name: Minecart
-  m_TagString: Untagged
+  m_TagString: Activatable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,6 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dest: {fileID: 0}
   isActivated: 0
+  objectsToScreen: {fileID: 0}
 --- !u!114 &5096545296223201132
 MonoBehaviour:
   m_ObjectHideFlags: 0
