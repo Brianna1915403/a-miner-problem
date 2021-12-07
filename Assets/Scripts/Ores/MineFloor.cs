@@ -28,8 +28,7 @@ public class MineFloor : MonoBehaviour
 
     private void Start() {
         m_OreSpawnerAmount = m_OreSpawners != null ? m_OreSpawners.Length : 0;
-        //TODO: Remove        
-        PrintDistribution();
+        
         GenerateOreDisribution();
         GeneratesOres();
     }
@@ -39,7 +38,7 @@ public class MineFloor : MonoBehaviour
     /// </summary>
     private void GenerateOreDisribution()
     {
-        // Clear the previous distrubution in case
+        // Clear the previous distribution in case
         m_OreDistribution.Clear();
         // Depending on the rarity of the ore a random rate, within it's respective ratio will be chosen at random.
         // It reduces it from the remainder and adds the value directly to the dictionary.
@@ -70,6 +69,7 @@ public class MineFloor : MonoBehaviour
     {
         foreach (var item in m_OreSpawners)
         {
+            Debug.Log($"{item.name}");
             item.SpawnOre();
         }
     }

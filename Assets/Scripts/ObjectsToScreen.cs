@@ -29,7 +29,7 @@ public class ObjectsToScreen : MonoBehaviour
             interactImage.enabled = true;
             Vector3 screenPos = cam.WorldToScreenPoint(target.position);
             interactImage.rectTransform.position = screenPos;
-            Debug.Log("target is " + screenPos.x + " pixels from the left");
+            // Debug.Log("target is " + screenPos.x + " pixels from the left");
         }
 
         if (target2 == null)

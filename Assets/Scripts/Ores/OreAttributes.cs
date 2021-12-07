@@ -57,6 +57,7 @@ public class OreAttributes : MonoBehaviour
         thoughness = OreTypeToThoughness(type);
         durability = thoughness;
         m_Ore.GetComponent<Renderer>().material = OreTypeToMaterial(type);
+        transform.name = type.ToString();
     }
 
     private void SpawnOreChunk() {

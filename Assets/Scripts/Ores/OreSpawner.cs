@@ -12,7 +12,8 @@ public class OreSpawner : MonoBehaviour
     void Start()
     {
         m_MineFloor = gameObject.transform.parent.GetComponentInParent<MineFloor>();
-        //SpawnOre();
+        
+        // SpawnOre();
     }
 
     /// <summary>
@@ -21,11 +22,14 @@ public class OreSpawner : MonoBehaviour
     public void SpawnOre() {
         // Decide which ore is spawning
         float sum = 0f;
+        Debug.Log(m_MineFloor.OreDistribution.Count);
         float[] ores = new float[m_MineFloor.OreDistribution.Count];
         for (int i = 0; i < m_MineFloor.OreDistribution.Count; ++i)
         {   
-            sum += m_MineFloor.OreDistribution[(ORE_TYPE)i] * 10;
-            ores[i] = sum;
+            if (m_MineFloor.OreDistribution.ContainsKey((ORE_TYPE)i)) {
+                sum += m_MineFloor.OreDistribution[(ORE_TYPE)i] * 10;
+                ores[i] = sum;
+            }
         }
 
         PrintArray(ores);
@@ -66,6 +70,7 @@ public class OreSpawner : MonoBehaviour
         GameObject oreObj = Instantiate(m_OrePrefab, GetOreSpawnPosition(), transform.rotation);
         oreObj.transform.parent = transform.parent;
         oreObj.GetComponent<OreAttributes>().UpdateOre((ORE_TYPE)ore);
+        Destroy(gameObject);
     }
 
     /// <summary>
