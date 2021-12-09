@@ -42,6 +42,7 @@ public class ShopTriggerCollider : MonoBehaviour
                     //Time.timeScale = 1;
                     StoreIsOpen = false;
                     PlayerIn = false;
+                    audioSource.Play();
                     return;
                 }
             }
