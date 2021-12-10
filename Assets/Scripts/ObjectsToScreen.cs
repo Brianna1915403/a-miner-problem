@@ -40,8 +40,7 @@ public class ObjectsToScreen : MonoBehaviour
         {
             activateImage.enabled = true;
             Vector3 screenPos = cam.WorldToScreenPoint(target2.position);
-            activateImage.rectTransform.position = (screenPos + new Vector3(0, 100f, 0));
-            Debug.Log("target is " + screenPos.x + " pixels from the left");
+            activateImage.rectTransform.position = (screenPos + new Vector3(0, -100f, 0));
         }
     }
 
