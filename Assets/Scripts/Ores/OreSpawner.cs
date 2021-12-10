@@ -20,9 +20,8 @@ public class OreSpawner : MonoBehaviour
     /// Spawns an ore at a random 'x' and 'z' coordonate within a sphere's radius.
     /// </summary>
     public void SpawnOre() {
-        // Decide which ore is spawning
+        // Sums up all the ore distribution values, creating a range for each ore type        
         float sum = 0f;
-        Debug.Log(m_MineFloor.OreDistribution.Count);
         float[] ores = new float[m_MineFloor.OreDistribution.Count];
         for (int i = 0; i < m_MineFloor.OreDistribution.Count; ++i)
         {   
@@ -34,30 +33,29 @@ public class OreSpawner : MonoBehaviour
 
         PrintArray(ores);
 
-        float choice = Random.Range(0, (ores[ores.Length - 1] + 1));
+        float choice = Random.Range(0, (ores[ores.Length - 1] + 10)); 
         int ore = -1;
 
-        for (int i = 0; i <= ores.Length; ++i)
+        // ex: ORE_TYPE.SILVER's range is from ores[0] (inclusive) to ores[1] (exclusive)
+        //  so if ores[0] = 0 and ores[1] = 139.8862 then SILVER ore will spawn if the random number falls within the range [0, 139.8862[
+        for (int i = 0; i < ores.Length; ++i)
         {
             if (i == 0)
             {
-                if (choice >= 0 && choice <= ores[i])
+                if (choice >= ores[i] && choice < ores[i + 1])
                 {
                     ore = i;
                     break;
                 }
-            }
-            else if (i == ores.Length)
+            } 
+            else if ((i + 1) == ores.Length)
             {
-                if (choice > ores[i - 1])
-                {
-                    ore = i - 1;
-                    break;
-                }
+                ore = i;
+                break;
             }
             else
             {
-                if (choice > ores[i - 1] && choice <= ores[i])
+                if (choice >= ores[i] && choice < ores[i + 1])
                 {
                     ore = i;
                     break;
@@ -65,11 +63,11 @@ public class OreSpawner : MonoBehaviour
             }
         }
 
-        Debug.Log($"Choice: {choice} | Ore: {ore}");
+        Debug.Log($"Choice: {choice} | Ore: {(ORE_TYPE)(ore + 1)}");
 
         GameObject oreObj = Instantiate(m_OrePrefab, GetOreSpawnPosition(), transform.rotation);
         oreObj.transform.parent = transform.parent;
-        oreObj.GetComponent<OreAttributes>().UpdateOre((ORE_TYPE)ore);
+        oreObj.GetComponent<OreAttributes>().UpdateOre((ORE_TYPE)(ore + 1));
         Destroy(gameObject);
     }
 

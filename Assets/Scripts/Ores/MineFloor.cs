@@ -69,48 +69,9 @@ public class MineFloor : MonoBehaviour
     {
         foreach (var item in m_OreSpawners)
         {
-            Debug.Log($"{item.name}");
             item.SpawnOre();
         }
     }
-
-    //private void GenerateOreDisribution() {
-    //    //GetPreviousFloorOreDistribution();
-    //    if (!m_PreviousFloor) 
-    //    { 
-    //        m_OreDistribution[ORE_TYPE.SILVER] = 100f;
-    //        PrintDistribution();
-    //        return;
-    //    }
-
-    //    SetHighestDistribution();
-
-    //    // Get the Highest distributed ore from the list and reduce it by N%,
-    //    // this N% is then turned into a remainder that is distributed to the rest of the ores,
-    //    // taking priority for the next ore in line.
-    //    // Maybe we could put some sort of indicator that if ore value = X% splice the column, and if it falls under Y% to leave or add to it.
-    //    foreach (var ore in m_PreviousFloor.OreDistribution)
-    //    {
-    //        m_OreDistribution[ore.Key] = ore.Value;
-    //        m_Remainder -= ore.Value;
-
-    //        //float min, max;
-    //        //GetMinMaxPrecentageFor(ore.Key, out min, out max);
-
-    //        // find the dif max val & m
-    //        // var = remainder max % - 
-    //        // bool - did we pass highest X - False
-    //        // Silver = highest? -> true ==> So reduce
-    //        // Any other similar remains or adds
-
-    //        //if (ore.Value > max)
-    //        //    AjustPercentage(ore.Key, -5f);
-    //        //else if (ore.Value < min)
-    //        //    AjustPercentage(ore.Key, 5f);
-    //    }
-
-    //    PrintDistribution();
-    //}
 
     /// <summary>
     /// Checks all the ore's present in OreDistribution and finds the one with the largest value.
@@ -123,45 +84,6 @@ public class MineFloor : MonoBehaviour
                 m_HighestDistribution = ore.Key;
         }
     }
-
-    //public void GetPreviousFloorOreDistribution()
-    //{
-    //    if (!m_PreviousFloor)
-    //    {
-    //        m_OreDistribution[ORE_TYPE.SILVER] = 100f;
-    //        m_Remainder = 0f;
-    //    }
-    //    else
-    //    {
-    //        foreach (var ore in m_PreviousFloor.OreDistribution)
-    //        {
-    //            // If the list is empty or the current contents is equal in value just add it to the list
-    //            if (m_HighestDistribution.Count == 0 || m_PreviousFloor.OreDistribution[m_HighestDistribution[0]] == ore.Value)
-    //                m_HighestDistribution.Add(ore.Key);
-    //            else
-    //            {
-    //                if (Math.Max(m_PreviousFloor.OreDistribution[m_HighestDistribution[0]], ore.Value) == ore.Value)
-    //                {
-    //                    m_HighestDistribution.Clear(); // We need to clear the list since the current highest is no longer the highest
-    //                    m_HighestDistribution.Add(ore.Key);
-    //                }
-    //            }
-    //        }
-    //    }
-
-    //    // TO REMOVE
-    //    foreach (var ore in OreDistribution)
-    //    {
-    //        t_OreDistribution += $"{ore.Key} = {ore.Value}% | ";
-    //    }
-
-    //    foreach (var ore in m_HighestDistribution)
-    //    {
-    //        t_HighestDistribution += $"{ore} | ";
-    //    }
-
-    //    Debug.Log($"GET_ORE_DISTRIBUTION for FLOOR {m_FloorNumber}: HIGHEST_DISTRIBUTION = {t_HighestDistribution} | FULL_DISTRIBUTION = {t_OreDistribution}");
-    //}
 
     /// <summary>
     /// Ajusts the ore's oredistribution value along with that of the remainder.
@@ -181,18 +103,13 @@ public class MineFloor : MonoBehaviour
     /// <returns></returns>
     private float RarityRatio(RARITY rarity)
     {
-        //if (m_FloorNumber == 1 && rarity.Equals(RARITY.COMMON))
-        //    return 100f;
-        //else if (m_FloorNumber == 1)
-        //    return 0f;
-
         return rarity switch
         {
-            RARITY.COMMON       => UnityEngine.Random.Range(0.51f, 0.77f),
+            RARITY.COMMON       => UnityEngine.Random.Range(0.47f, 0.74f),
             RARITY.UNCOMMON     => UnityEngine.Random.Range(0.15f, 0.20f),
             RARITY.RARE         => UnityEngine.Random.Range(0.10f, 0.15f),
-            RARITY.EPIC         => UnityEngine.Random.Range(0.02f, 0.08f),
-            RARITY.LEGENDARY    => UnityEngine.Random.Range(0.00f, 0.02f),
+            RARITY.EPIC         => UnityEngine.Random.Range(0.05f, 0.08f),
+            RARITY.LEGENDARY    => UnityEngine.Random.Range(0.01f, 0.05f),
             _ => 0f,
         };
     }

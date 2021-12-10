@@ -23,7 +23,6 @@ public class Lantern : MonoBehaviour
         {
             if (collider.gameObject.CompareTag("Player"))
             {
-                Debug.Log("Player within distance.");
                 if (m_LightBox.IsOn) {
                     m_CurrentTime += Time.deltaTime;
                     if (m_CurrentTime >= m_TargetTime) {
@@ -47,7 +46,7 @@ public class Lantern : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log($"Trigger Collider w/ {other.name}");
-        if (other.CompareTag("Ore Chunk"))
+        if (other.CompareTag("Pickable") && other.GetComponent<OreChunk>())
         {
             OreChunk attributes = other.GetComponent<OreChunk>();
             Debug.Log($"Can activate? {m_CanActivate}");
@@ -62,12 +61,6 @@ public class Lantern : MonoBehaviour
             }
         }
     }
-
-    //void OnMouseOver() {
-    //    if (!m_LightBox.IsOn && m_CanActivate) {
-    //        m_LightBox.TurnOn();
-    //    }
-    //}
 
     private void OnDrawGizmos()
     {

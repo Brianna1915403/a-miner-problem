@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: -384255210121812746}
   - component: {fileID: 6651137107673690266}
   - component: {fileID: 4831934047757100626}
+  - component: {fileID: -501011949606673815}
   m_Layer: 0
   m_Name: Ore_Chunk (5)
-  m_TagString: Ore Chunk
+  m_TagString: Pickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,6 +145,7 @@ MonoBehaviour:
   dest: {fileID: 0}
   isPicked: 0
   canPickUpMaterial: {fileID: 0}
+  objectsToScreen: {fileID: 0}
 --- !u!65 &4831934047757100626
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -157,3 +159,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2759628, y: 0.2191391, z: 0.34721187}
   m_Center: {x: 0.0030777454, y: 0.0081272125, z: -0.008269116}
+--- !u!135 &-501011949606673815
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8525465316900057882}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}

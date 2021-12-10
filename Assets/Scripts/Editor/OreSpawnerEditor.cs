@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(OreSpawner))]
+//[CustomEditor(typeof(OreSpawner))]
 public class OreSpawnerEditor : Editor
 {
     private OreSpawner m_Script;

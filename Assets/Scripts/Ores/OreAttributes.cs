@@ -14,6 +14,7 @@ public class OreAttributes : MonoBehaviour
     public int currentDurability;
 
     [Header("Ore Chunk")]
+    [SerializeField] private int m_ChunkDropRate;
     [SerializeField] private GameObject[] m_OreChunkPrefabs;
     [SerializeField] private Material[] m_OreMaterials;
 
@@ -31,21 +32,20 @@ public class OreAttributes : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Would need to change eventually
-        //thoughness = (int)OreType;
-        //durability = (int)OreType;
-
-        currentDurability = (int)OreType;
-        m_Rarity = OreTypeToRarity(OreType);
+        thoughness = OreTypeToThoughness(OreType);
+        durability = thoughness;
+        currentDurability = durability;
+        m_Rarity = OreTypeToRarity(OreType);        
+        m_ChunkDropRate = OreTypeToDropRate(OreType);
     }
 
     public void TakeDamage(int damage)
     {
         currentDurability -= damage;
-        SpawnOreChunk(); // Tests
-
         if(currentDurability <= 0)
         {
+            for (int i = 0; i < m_ChunkDropRate; ++i)
+                SpawnOreChunk();
             Destroy(gameObject);
         }
     }
@@ -56,6 +56,9 @@ public class OreAttributes : MonoBehaviour
         m_Rarity = OreTypeToRarity(type);
         thoughness = OreTypeToThoughness(type);
         durability = thoughness;
+        currentDurability = durability;
+        m_ChunkDropRate = OreTypeToDropRate(OreType);
+
         m_Ore.GetComponent<Renderer>().material = OreTypeToMaterial(type);
         transform.name = type.ToString();
     }
@@ -95,7 +98,24 @@ public class OreAttributes : MonoBehaviour
         };
     }
 
-    public Material OreTypeToMaterial(ORE_TYPE type)
+    public static int OreTypeToDropRate(ORE_TYPE type)
+    {
+        int min = 0;
+        int max = 0;
+        switch (type)
+        {
+            case ORE_TYPE.CRYSTAL:  min = 1; max = 1; break;
+            case ORE_TYPE.SILVER:   min = OreTypeToThoughness(type); max = OreTypeToThoughness(type) * 2; break;
+            case ORE_TYPE.COPPER:   min = OreTypeToThoughness(type); max = OreTypeToThoughness(type) * 2; break;
+            case ORE_TYPE.GOLD:     min = OreTypeToThoughness(type); max = OreTypeToThoughness(type) * 2; break;
+            case ORE_TYPE.ELECTRUM: min = OreTypeToThoughness(type); max = OreTypeToThoughness(type) * 2; break;
+            case ORE_TYPE.PLATINUM: min = OreTypeToThoughness(type); max = OreTypeToThoughness(type) * 2; break;
+        };
+
+        return Random.Range(min, max);
+    }
+
+    private Material OreTypeToMaterial(ORE_TYPE type)
     {
         return type switch
         {
