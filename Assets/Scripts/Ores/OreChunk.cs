@@ -10,4 +10,10 @@ public class OreChunk : MonoBehaviour
         set { m_OreType = value; }
         get { return m_OreType; }
     }
+
+    void Start()
+    {
+        Rigidbody rigidbody = GetComponent<Rigidbody>();
+        rigidbody.AddForce(Vector3.up * 5, ForceMode.Impulse);
+    }
 }

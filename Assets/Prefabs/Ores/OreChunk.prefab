@@ -241,6 +241,7 @@ MonoBehaviour:
   dest: {fileID: 0}
   isPicked: 0
   canPickUpMaterial: {fileID: 0}
+  objectsToScreen: {fileID: 0}
 --- !u!114 &-2646999959598355153
 MonoBehaviour:
   m_ObjectHideFlags: 0

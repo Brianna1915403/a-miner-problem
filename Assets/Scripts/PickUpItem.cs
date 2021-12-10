@@ -87,34 +87,27 @@ public class PickUpItem : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-
-
-
-    }
-
     IEnumerator PickUpCooldown()
     {
         isOnCooldown = true;
         yield return new WaitForSeconds(pickCooldown);
         isOnCooldown = false;
     }
+
     // void OnMouseDown()
     // {
-    //     GetComponent<Rigidbody>().useGravity = false;
-    //     GetComponent<Rigidbody>().isKinematic = true;        
+    //     //GetComponent<Rigidbody>().useGravity = false;
+    //     GetComponent<Rigidbody>().isKinematic = true;
     //     this.transform.position = dest.transform.position;
     //     this.transform.parent = dest.transform;
     //     this.GetComponent<Rigidbody>().velocity = Vector3.zero;
     //     this.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-    // }
+    // }    
 
     // void OnMouseUp()
     // {
 
-    //     GetComponent<Rigidbody>().isKinematic = true;
-    //     // GetComponent<Rigidbody>().isKinematic = false;
+    //     //GetComponent<Rigidbody>().isKinematic = true;
     //     this.transform.position = dest.transform.position;
     //     this.transform.parent = null;
     //     GetComponent<Rigidbody>().useGravity = true;

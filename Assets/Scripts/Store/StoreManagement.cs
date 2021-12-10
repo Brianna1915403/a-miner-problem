@@ -7,7 +7,8 @@ using System.Threading;
 
 public class StoreManagement : MonoBehaviour
 {
-    public GameObject tooltip;
+    public GameObject tooltipFailed;
+    public GameObject tooltipSuccess;
     private float cooldownStart = 0f;
     private float cooldown = 2f;
     private RectTransform container;
@@ -27,29 +28,48 @@ public class StoreManagement : MonoBehaviour
     }
 
     private void Start() {
-        CreateItemButton(StoreItem.ItemType.Pickaxe_1, "Pickaxe_1", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_1), 0, 1);
-        CreateItemButton(StoreItem.ItemType.Pickaxe_2, "Pickaxe_2", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_2), 0, 2);
-        CreateItemButton(StoreItem.ItemType.Pickaxe_3, "Pickaxe_3", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_3), 0, 3);
-        CreateItemButton(StoreItem.ItemType.Pickaxe_4, "Pickaxe_4", StoreItem.GetCost(StoreItem.ItemType.Pickaxe_4), 0, 4);
-        CreateItemButton(StoreItem.ItemType.TrainPart_1, "Wheels", StoreItem.GetCost(StoreItem.ItemType.TrainPart_1), -485, 0);
-        CreateItemButton(StoreItem.ItemType.TrainPart_2, "Wheel Support", StoreItem.GetCost(StoreItem.ItemType.TrainPart_2), -485, 1);
-        CreateItemButton(StoreItem.ItemType.TrainPart_3, "Connecting Rods", StoreItem.GetCost(StoreItem.ItemType.TrainPart_3), -485, 2);
-        CreateItemButton(StoreItem.ItemType.TrainPart_4, "Engine Car", StoreItem.GetCost(StoreItem.ItemType.TrainPart_4), -485, 3);
-        CreateItemButton(StoreItem.ItemType.TrainPart_5, "Roof", StoreItem.GetCost(StoreItem.ItemType.TrainPart_5), -485, 4);
-        CreateItemButton(StoreItem.ItemType.TrainPart_6, "Chimney", StoreItem.GetCost(StoreItem.ItemType.TrainPart_6), -485, 5);
-        CreateItemButton(StoreItem.ItemType.TrainPart_7, "Screws", StoreItem.GetCost(StoreItem.ItemType.TrainPart_7), -485, 6);
-        CreateItemButton(StoreItem.ItemType.TrainPart_8, "Tracks", StoreItem.GetCost(StoreItem.ItemType.TrainPart_8), -485, 7);
+        CreateLegend();
+        CreateItemButton(StoreItem.ItemType.TrainPart_5, "Roof", StoreItem.GetCost(StoreItem.ItemType.TrainPart_5), 0, 1);
+        CreateItemButton(StoreItem.ItemType.TrainPart_6, "Chimney", StoreItem.GetCost(StoreItem.ItemType.TrainPart_6), 0, 2);
+        CreateItemButton(StoreItem.ItemType.TrainPart_7, "Screws", StoreItem.GetCost(StoreItem.ItemType.TrainPart_7), 0, 3);
+        CreateItemButton(StoreItem.ItemType.TrainPart_8, "Tracks", StoreItem.GetCost(StoreItem.ItemType.TrainPart_8), 0, 4);
+        CreateItemButton(StoreItem.ItemType.TrainPart_1, "Wheels", StoreItem.GetCost(StoreItem.ItemType.TrainPart_1), -485, 1);
+        CreateItemButton(StoreItem.ItemType.TrainPart_2, "Wheel Support", StoreItem.GetCost(StoreItem.ItemType.TrainPart_2), -485, 2);
+        CreateItemButton(StoreItem.ItemType.TrainPart_3, "Connecting Rods", StoreItem.GetCost(StoreItem.ItemType.TrainPart_3), -485, 3);
+        CreateItemButton(StoreItem.ItemType.TrainPart_4, "Engine Car", StoreItem.GetCost(StoreItem.ItemType.TrainPart_4), -485, 4);
+        
         //CreateItemButton(StoreItem.ItemType.Wagon, "Wagon", StoreItem.GetCost(StoreItem.ItemType.Wagon), -485, 7);
 
-        tooltip.SetActive(false);
+        tooltipFailed.SetActive(false);
+        tooltipSuccess.SetActive(false);
         Hide();
     }
 
     private void Update() {
-        Debug.Log(Time.time);
+        oreName = StoreOres.Instance.OreName;
+        oreCount = StoreOres.Instance.OreCount;
+
         if (Time.time >= cooldownStart){
-            tooltip.SetActive(false);   
+            tooltipFailed.SetActive(false);   
+            tooltipSuccess.SetActive(false);
+            //Debug.Log("tooltip unactive");
             cooldownStart = Time.time;
+        }
+    }
+
+    private void CreateLegend(){
+        GameObject shopItemTransform = Instantiate(shopItemTemplate, container);
+        RectTransform shopItemRectTransform = shopItemTransform.GetComponent<RectTransform>();
+
+        float spacing = -50f;
+        shopItemRectTransform.anchoredPosition = new Vector2(-485, spacing * 0);
+
+        Transform text = shopItemTransform.transform.GetChild(1);
+
+        text.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("Amount");
+
+        for (int i = 1; i < text.childCount; i++){
+            text.transform.GetChild(i).GetComponent<TextMeshProUGUI>().SetText(oreCount[i-1].ToString());
         }
     }
 
@@ -65,8 +85,6 @@ public class StoreManagement : MonoBehaviour
 
         text.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(itemName);
 
-        Debug.Log(itemCost[1]);
-
         for (int i = 1; i < text.childCount; i++){
             text.transform.GetChild(i).GetComponent<TextMeshProUGUI>().SetText(itemCost[i-1].ToString());
         }
@@ -79,6 +97,9 @@ public class StoreManagement : MonoBehaviour
     void TryBuyItem(List<int> itemCost, StoreItem.ItemType itemType){
         if(TrySpendOreAmount(itemCost)){
             // can afford cost
+            tooltipSuccess.SetActive(true);
+            cooldownStart = Time.time + cooldown;
+            CreateLegend();
             BoughtItem(itemType);
         }
     }
@@ -87,9 +108,9 @@ public class StoreManagement : MonoBehaviour
     {
         for(int i = 0; i < 5; i++){
             if(oreAmountRequired[i] > oreCount[i]){ 
-                tooltip.SetActive(true);
+                tooltipFailed.SetActive(true);
+                Debug.Log("tooltip active");
                 cooldownStart = Time.time + cooldown;
-                Debug.Log(Time.time);
                 return false; 
             }
         }
@@ -109,26 +130,6 @@ public class StoreManagement : MonoBehaviour
     {
         switch(itemType){
             default:
-            case StoreItem.ItemType.Pickaxe_1:
-            {
-                Debug.Log("Pickaxe_1 has been bought");
-                break;
-            }
-            case StoreItem.ItemType.Pickaxe_2:
-            {
-                Debug.Log("Pickaxe_2 has been bought");
-                break;
-            }
-            case StoreItem.ItemType.Pickaxe_3:
-            {
-                Debug.Log("Pickaxe_3 has been bought");
-                break;
-            }
-            case StoreItem.ItemType.Pickaxe_4:
-            {
-                Debug.Log("Pickaxe_4 has been bought");
-                break;
-            }
             case StoreItem.ItemType.TrainPart_1:
             {
                 train.activate(train.wheels); 

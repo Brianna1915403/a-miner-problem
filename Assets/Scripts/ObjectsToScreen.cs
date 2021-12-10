@@ -7,7 +7,9 @@ using TMPro;
 public class ObjectsToScreen : MonoBehaviour
 {
     public Transform target;
-    public Image testImage;
+    public Transform target2;
+    public Image interactImage;
+    public Image activateImage;
 
     Camera cam;
 
@@ -20,20 +22,35 @@ public class ObjectsToScreen : MonoBehaviour
     {
         if (target == null)
         {
-            testImage.enabled = false;
+            interactImage.enabled = false;
         }
         else
         {
-            testImage.enabled = true;
+            interactImage.enabled = true;
             Vector3 screenPos = cam.WorldToScreenPoint(target.position);
-            testImage.rectTransform.position = screenPos;
-            Debug.Log("target is " + screenPos.x + " pixels from the left");
+            interactImage.rectTransform.position = screenPos;
+            // Debug.Log("target is " + screenPos.x + " pixels from the left");
         }
 
+        if (target2 == null)
+        {
+            activateImage.enabled = false;
+        }
+        else
+        {
+            activateImage.enabled = true;
+            Vector3 screenPos = cam.WorldToScreenPoint(target2.position);
+            activateImage.rectTransform.position = (screenPos + new Vector3(0, 100f, 0));
+            Debug.Log("target is " + screenPos.x + " pixels from the left");
+        }
     }
 
     public void setTarget(Transform otherTarget)
     {
         this.target = otherTarget;
+    }
+    public void setTarget2(Transform otherTarget)
+    {
+        this.target2 = otherTarget;
     }
 }

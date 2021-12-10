@@ -10,11 +10,18 @@ public class ActivateMinecart : MonoBehaviour
     private float activateCooldown = 0.5f;
     private bool isOnCooldown = false;
     private PathCreation.Examples.PathFollower pathFollower;
+    public ObjectsToScreen objectsToScreen;
+    GameObject cam;
+
+    private AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         dest = GameObject.FindWithTag("Destination");
         pathFollower = this.GetComponent<PathCreation.Examples.PathFollower>();
+        cam = GameObject.FindWithTag("MainCamera");
+        objectsToScreen = cam.GetComponent<ObjectsToScreen>();
         if (pathFollower.speed == 0)
             isActivated = false;
     }
@@ -23,12 +30,14 @@ public class ActivateMinecart : MonoBehaviour
         isActivated = pathFollower.speed != 0 ? true : false;
         if (other.gameObject.CompareTag("Destination"))
         {
+            objectsToScreen.setTarget2(this.gameObject.transform);
             if (Input.GetAxis("Activation") == 1)
             {
                 if (isOnCooldown == false && isActivated == false)
                 {
                     pathFollower.speed = 2f;
                     StartCoroutine(PickUpCooldown());
+                    audioSource.Play();
 
                 }
                 // The objects are not the same
@@ -36,6 +45,7 @@ public class ActivateMinecart : MonoBehaviour
                 {
                     pathFollower.speed = 0;
                     StartCoroutine(PickUpCooldown());
+                    audioSource.Play();
                 }
 
             }

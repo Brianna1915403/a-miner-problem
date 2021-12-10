@@ -24,6 +24,8 @@ public class FirstPersonController : MonoBehaviour
     public Camera playerCamera;
 
     public Transform destinationObject;
+
+    public AudioSource audioSource;
     
 
     public float fov = 60f;
@@ -141,6 +143,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
 
         crosshairObject = GetComponentInChildren<Image>();
@@ -339,6 +342,7 @@ public class FirstPersonController : MonoBehaviour
         // Gets input and calls jump method
         if(enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
         {
+            audioSource.Play();
             Jump();
         }
 
@@ -435,7 +439,7 @@ public class FirstPersonController : MonoBehaviour
 
                 if (hideBarWhenFull && sprintRemaining == sprintDuration)
                 {
-                    sprintBarCG.alpha -= 3 * Time.deltaTime;
+                    //sprintBarCG.alpha -= 3 * Time.deltaTime;
                 }
 
                 targetVelocity = transform.TransformDirection(targetVelocity) * walkSpeed;

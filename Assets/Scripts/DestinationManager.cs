@@ -32,6 +32,8 @@ public class DestinationManager : MonoBehaviour
     {
         if (other.CompareTag("Pickable"))
             other.GetComponent<PickUpItem>().objectsToScreen.setTarget(null);
+        if (other.CompareTag("Activatable"))
+            other.GetComponent<ActivateMinecart>().objectsToScreen.setTarget2(null);
     }
 
     public GameObject FindClosestPickableOre()
