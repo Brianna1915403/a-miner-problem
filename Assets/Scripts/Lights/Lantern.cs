@@ -53,6 +53,7 @@ public class Lantern : MonoBehaviour
             if (m_CanActivate && attributes.OreType.Equals(ORE_TYPE.CRYSTAL))
             {
                 m_LightBox.TurnOn();
+                other.GetComponent<PickUpItem>().DestinationManager.holdingItem = false;
                 Destroy(other.gameObject);
             }
             else

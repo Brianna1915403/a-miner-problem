@@ -20,6 +20,10 @@ public class PickUpItem : MonoBehaviour
 
     GameObject cam;
 
+    public DestinationManager DestinationManager
+    {
+        get { return destinationManager; }
+    }
 
     private void Start()
     {

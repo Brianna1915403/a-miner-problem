@@ -34,8 +34,6 @@ public class DestinationManager : MonoBehaviour
             other.GetComponent<PickUpItem>().objectsToScreen.setTarget(null);
         if (other.CompareTag("Activatable"))
             other.GetComponent<ActivateMinecart>().objectsToScreen.setTarget2(null);
-        if (other.CompareTag("Shop"))
-            other.GetComponent<ShopTriggerCollider>().objectsToScreen.setTarget2(null);
     }
 
     public GameObject FindClosestPickableOre()
