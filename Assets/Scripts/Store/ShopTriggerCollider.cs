@@ -17,18 +17,19 @@ public class ShopTriggerCollider : MonoBehaviour
 
     private AudioSource audioSource;
 
-    public   FirstPersonController camera;
+    public FirstPersonController camera;
 
     public ObjectsToScreen objectsToScreen;
-    GameObject cam; 
+    GameObject cam;
 
-    private void Start() {
+    private void Start()
+    {
         audioSource = GetComponent<AudioSource>();
         dest = GameObject.FindWithTag("Destination");
         cam = GameObject.FindWithTag("MainCamera");
         objectsToScreen = cam.GetComponent<ObjectsToScreen>();
     }
-    
+
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Destination"))

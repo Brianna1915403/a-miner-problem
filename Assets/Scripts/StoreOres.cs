@@ -5,6 +5,18 @@ using System.Linq;
 
 public class StoreOres : MonoBehaviour
 {
+    // #region Singleton
+    // private static StoreOres m_Instance;
+    // public static StoreOres Instance
+    // {
+    //     get
+    //     {
+    //         if (!m_Instance)
+    //             m_Instance = FindObjectOfType<StoreOres>();
+    //         return m_Instance;
+    //     }
+    // }
+    // #endregion
 
     public List<string> OreName
     {
@@ -22,10 +34,9 @@ public class StoreOres : MonoBehaviour
     public int max_amount_ores = 30;
     private OreChunk oreChunk;
     DestinationManager destinationManager;
-    public ObjectsToScreen objectsToScreen;
-
-    GameObject cam;
     public GameObject dest;
+    public ObjectsToScreen objectsToScreen;
+    GameObject cam;
     // Start is called before the first frame update
     void Awake()
     {
@@ -37,7 +48,7 @@ public class StoreOres : MonoBehaviour
         //     return;
         // }
 
-        //DontDestroyOnLoad(this.gameObject);
+        //sDontDestroyOnLoad(this.gameObject);
 
     }
 
@@ -57,14 +68,12 @@ public class StoreOres : MonoBehaviour
             if (other.gameObject.GetComponent<OreChunk>() != null)
             {
                 oreChunk = other.gameObject.GetComponent<OreChunk>();
-                int index = ore_name.FindIndex(a => a.Contains((oreChunk.OreType.ToString())));
-                if (index >= 0)
-                {
-                    ore_count[index] = ore_count[index] + 1;
-                    Destroy(other.gameObject);
-                    destinationManager.holdingItem = false;
-                    total_ores = ore_count.Sum();
-                }
+                //int index = ore_name.FindIndex(a => a.Contains((oreChunk.OreType.ToString())));
+                PlayerPrefs.SetInt(oreChunk.OreType.ToString(), PlayerPrefs.GetInt(oreChunk.OreType.ToString(), 0) + 1);
+                PlayerPrefs.Save();
+
+                Destroy(other.gameObject);
+                destinationManager.holdingItem = false;
             }
         }
     }

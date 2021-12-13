@@ -43,17 +43,25 @@ public class StoreManagement : MonoBehaviour
         CreateItemButton(StoreItem.ItemType.TrainPart_3, "Connecting Rods", StoreItem.GetCost(StoreItem.ItemType.TrainPart_3), -485, 3);
         CreateItemButton(StoreItem.ItemType.TrainPart_4, "Engine Car", StoreItem.GetCost(StoreItem.ItemType.TrainPart_4), -485, 4);
 
+
         //CreateItemButton(StoreItem.ItemType.Wagon, "Wagon", StoreItem.GetCost(StoreItem.ItemType.Wagon), -485, 7);
         storeOres = minecart.GetComponent<StoreOres>();
         tooltipFailed.SetActive(false);
         tooltipSuccess.SetActive(false);
+        oreName = storeOres.OreName;
+        oreCount = storeOres.OreCount;
         Hide();
     }
 
     private void Update()
     {
         oreName = storeOres.OreName;
-        oreCount = storeOres.OreCount;
+        for (int i = 0; i < storeOres.OreName.Count; i++)
+        {
+            oreCount[i] = (PlayerPrefs.GetInt(storeOres.OreName[i], 0));
+            Debug.Log("Ore Count" + PlayerPrefs.GetInt(storeOres.OreName[i], 0) + " " + storeOres.OreName[i]);
+        }
+
 
         if (Time.time >= cooldownStart)
         {
