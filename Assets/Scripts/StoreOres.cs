@@ -5,18 +5,6 @@ using System.Linq;
 
 public class StoreOres : MonoBehaviour
 {
-    #region Singleton
-    private static StoreOres m_Instance;
-    public static StoreOres Instance
-    {
-        get
-        {
-            if (!m_Instance)
-                m_Instance = FindObjectOfType<StoreOres>();
-            return m_Instance;
-        }
-    }
-    #endregion
 
     public List<string> OreName
     {
@@ -38,15 +26,15 @@ public class StoreOres : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (m_Instance == null)
-            m_Instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        // if (m_Instance == null)
+        //     m_Instance = this;
+        // else
+        // {
+        //     Destroy(gameObject);
+        //     return;
+        // }
 
-        //sDontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
 
     }
 

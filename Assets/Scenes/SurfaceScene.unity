@@ -1551,11 +1551,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d550a1445aad01c4ebb873989bf314f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dest: {fileID: 2094910443}
+  dest: {fileID: 0}
   ShopPanel: {fileID: 291070171}
   m_Radius: 5
   camera: {fileID: 1333764187}
-  objectsToScreen: {fileID: 1060669686}
+  objectsToScreen: {fileID: 0}
 --- !u!1001 &162976069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8587,17 +8587,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049969114}
   m_Mesh: {fileID: 4300000, guid: a8c9baf832290304098b8579d16bd9d3, type: 2}
---- !u!114 &1060669686 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6164501625183935325, guid: af6ea016298681148bc269d5db3c0840, type: 3}
-  m_PrefabInstance: {fileID: 6164501624561636267}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd89a30a4fa5e7e40b41b148f3bc4577, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1069672047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12490,6 +12479,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4312435003615764, guid: 44079a24b89f07c4797e49b48d45b768, type: 3}
   m_PrefabInstance: {fileID: 1641998128}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1649658975 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5097805129291612135, guid: 79057fe6086d3244086b073c832b8d01, type: 3}
+  m_PrefabInstance: {fileID: 5096545296914257823}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1672981092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14796,6 +14790,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1123516708}
     - target: {fileID: 2221623459350098112, guid: 317bc1a494ef6dc4595e1833d3af7a85, type: 3}
+      propertyPath: minecart
+      value: 
+      objectReference: {fileID: 1649658975}
+    - target: {fileID: 2221623459350098112, guid: 317bc1a494ef6dc4595e1833d3af7a85, type: 3}
       propertyPath: engineCar
       value: 
       objectReference: {fileID: 7531065936792946140}
@@ -16357,11 +16355,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082439966}
   m_Mesh: {fileID: 4300000, guid: 1d9d7d34aa08b5847a0654fe47f4efbc, type: 2}
---- !u!1 &2094910443 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6164501626243340352, guid: af6ea016298681148bc269d5db3c0840, type: 3}
-  m_PrefabInstance: {fileID: 6164501624561636267}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2096365886
 GameObject:
   m_ObjectHideFlags: 0
