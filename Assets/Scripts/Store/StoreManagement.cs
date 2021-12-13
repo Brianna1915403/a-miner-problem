@@ -33,14 +33,19 @@ public class StoreManagement : MonoBehaviour
 
     private void Start()
     {
+        for (int i = 0; i < storeOres.OreName.Count; i++)
+        {
+            oreCount[i] = (PlayerPrefs.GetInt(storeOres.OreName[i], 0));
+            Debug.Log("Ore Count" + PlayerPrefs.GetInt(storeOres.OreName[i], 0) + " " + storeOres.OreName[i]);
+        }
         CreateLegend();
         CreateItemButton(StoreItem.ItemType.TrainPart_5, "Roof", StoreItem.GetCost(StoreItem.ItemType.TrainPart_5), 0, 1);
         CreateItemButton(StoreItem.ItemType.TrainPart_6, "Chimney", StoreItem.GetCost(StoreItem.ItemType.TrainPart_6), 0, 2);
         CreateItemButton(StoreItem.ItemType.TrainPart_7, "Screws", StoreItem.GetCost(StoreItem.ItemType.TrainPart_7), 0, 3);
         CreateItemButton(StoreItem.ItemType.TrainPart_8, "Tracks", StoreItem.GetCost(StoreItem.ItemType.TrainPart_8), 0, 4);
         CreateItemButton(StoreItem.ItemType.TrainPart_1, "Wheels", StoreItem.GetCost(StoreItem.ItemType.TrainPart_1), -485, 1);
-        CreateItemButton(StoreItem.ItemType.TrainPart_2, "Wheel Support", StoreItem.GetCost(StoreItem.ItemType.TrainPart_2), -485, 2);
-        CreateItemButton(StoreItem.ItemType.TrainPart_3, "Connecting Rods", StoreItem.GetCost(StoreItem.ItemType.TrainPart_3), -485, 3);
+        CreateItemButton(StoreItem.ItemType.TrainPart_2, "Support", StoreItem.GetCost(StoreItem.ItemType.TrainPart_2), -485, 2);
+        CreateItemButton(StoreItem.ItemType.TrainPart_3, "Rods", StoreItem.GetCost(StoreItem.ItemType.TrainPart_3), -485, 3);
         CreateItemButton(StoreItem.ItemType.TrainPart_4, "Engine Car", StoreItem.GetCost(StoreItem.ItemType.TrainPart_4), -485, 4);
 
 
@@ -67,12 +72,11 @@ public class StoreManagement : MonoBehaviour
         {
             tooltipFailed.SetActive(false);
             tooltipSuccess.SetActive(false);
-            //Debug.Log("tooltip unactive");
             cooldownStart = Time.time;
         }
     }
 
-    private void CreateLegend()
+    public void CreateLegend()
     {
         GameObject shopItemTransform = Instantiate(shopItemTemplate, container);
         RectTransform shopItemRectTransform = shopItemTransform.GetComponent<RectTransform>();
@@ -120,28 +124,31 @@ public class StoreManagement : MonoBehaviour
             // can afford cost
             tooltipSuccess.SetActive(true);
             cooldownStart = Time.time + cooldown;
-            CreateLegend();
+            
             BoughtItem(itemType);
         }
     }
 
     public bool TrySpendOreAmount(List<int> oreAmountRequired)
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < storeOres.OreName.Count; i++)
         {
             if (oreAmountRequired[i] > oreCount[i])
             {
                 tooltipFailed.SetActive(true);
                 Debug.Log("tooltip active");
                 cooldownStart = Time.time + cooldown;
+                CreateLegend();
                 return false;
             }
         }
-        for (int j = 0; j < 5; j++)
+        for (int j = 0; j < storeOres.OreName.Count; j++)
         {
-            oreCount[j] -= oreAmountRequired[j];
+            PlayerPrefs.SetInt(oreName[j], PlayerPrefs.GetInt(oreName[j], 0) - oreAmountRequired[j]);
+            oreCount[j] = (PlayerPrefs.GetInt(storeOres.OreName[j], 0));
         }
-
+        Debug.Log("Able to buy");
+        CreateLegend();
         return true;
     }
 

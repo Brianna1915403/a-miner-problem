@@ -24,11 +24,11 @@ public class StoreItem
     public static List<int> GetCost(ItemType itemType){
         switch(itemType){
             default:
-            case ItemType.Pickaxe_1:   return CreateList(1,2,3,4,5);
+            case ItemType.Pickaxe_1:   return CreateList(1,0,0,0,0);
             case ItemType.Pickaxe_2:   return CreateList(1,2,3,4,5);
             case ItemType.Pickaxe_3:   return CreateList(1,2,3,4,5);
             case ItemType.Pickaxe_4:   return CreateList(1,2,3,4,5);
-            case ItemType.TrainPart_1: return CreateList(1,2,3,4,5);
+            case ItemType.TrainPart_1: return CreateList(2,0,0,1,1);
             case ItemType.TrainPart_2: return CreateList(1,2,3,4,5);
             case ItemType.TrainPart_3: return CreateList(1,2,3,4,5);
             case ItemType.TrainPart_4: return CreateList(1,2,3,4,5);
