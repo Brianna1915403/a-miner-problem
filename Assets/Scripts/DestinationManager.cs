@@ -17,6 +17,8 @@ public class DestinationManager : MonoBehaviour
 
     public Image e_button;
     public Image f_button;
+    public ObjectsToScreen objectsToScreen;
+    GameObject cam;
 
     void Start()
     {
@@ -33,7 +35,7 @@ public class DestinationManager : MonoBehaviour
         if (other.CompareTag("Pickable"))
             other.GetComponent<PickUpItem>().objectsToScreen.setTarget(null);
         if (other.CompareTag("Activatable"))
-            other.GetComponent<ActivateMinecart>().objectsToScreen.setTarget2(null);
+            other.GetComponent<StoreOres>().objectsToScreen.setTarget2(null);
     }
 
     public GameObject FindClosestPickableOre()

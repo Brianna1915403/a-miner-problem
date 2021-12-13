@@ -22,6 +22,9 @@ public class StoreOres : MonoBehaviour
     public int max_amount_ores = 30;
     private OreChunk oreChunk;
     DestinationManager destinationManager;
+    public ObjectsToScreen objectsToScreen;
+
+    GameObject cam;
     public GameObject dest;
     // Start is called before the first frame update
     void Awake()
@@ -43,6 +46,8 @@ public class StoreOres : MonoBehaviour
         dest = GameObject.FindWithTag("Destination");
         destinationManager = dest.GetComponent<DestinationManager>();
         total_ores = ore_count.Sum();
+        cam = GameObject.FindWithTag("MainCamera");
+        objectsToScreen = cam.GetComponent<ObjectsToScreen>();
     }
     void OnTriggerEnter(Collider other)
     {
